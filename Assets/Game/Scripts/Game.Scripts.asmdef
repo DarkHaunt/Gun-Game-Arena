@@ -1,0 +1,16 @@
+{
+    "name": "Game.Scripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f101a6520270a1d489279295f29b4a95"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
