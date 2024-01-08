@@ -1,9 +1,8 @@
 {
-    "name": "Game.Scripts",
+    "name": "Game.Scripts.Infrastucture",
     "rootNamespace": "",
     "references": [
-        "GUID:f101a6520270a1d489279295f29b4a95",
-        "GUID:1ddaecc6fbcb80849a88b388457f7bd7"
+        "GUID:f101a6520270a1d489279295f29b4a95"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

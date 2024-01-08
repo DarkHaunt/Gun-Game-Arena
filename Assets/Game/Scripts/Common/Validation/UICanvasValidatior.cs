@@ -1,7 +1,7 @@
 #if UNITY_EDITOR
 using UnityEngine;
 
-namespace Game.Scripts.Common
+namespace Game.Scripts.Common.Validation
 {
     [ExecuteInEditMode]
     public class UICameraCanvasValidator : MonoBehaviour
@@ -9,7 +9,7 @@ namespace Game.Scripts.Common
         private void Awake()
         {
             var canvas = GetComponent<Canvas>();
-            var obj = GameObject.Find(InfrastructureKeys.UICameraName);
+            var obj = GameObject.Find(ValidateKeys.UICameraName);
 
             if (obj && obj.TryGetComponent(out Camera uiCamera))
             {
