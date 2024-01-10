@@ -13,7 +13,7 @@ namespace Game.Scripts.Menu.StateMachine
         
         public void Initialize()
         {
-            Debug.Log($"<color=white>Init</color>");
+            Debug.Log($"<color=white>Init Menu </color>");
         }
     }
 }
