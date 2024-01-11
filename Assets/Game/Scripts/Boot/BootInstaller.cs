@@ -9,7 +9,9 @@ namespace Game.Scripts.Boot
         
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<Bootstrapper>().FromInstance(_bootstrapper);
+            Container
+                .BindInterfacesTo<Bootstrapper>()
+                .FromInstance(_bootstrapper);
         }
     }
 }

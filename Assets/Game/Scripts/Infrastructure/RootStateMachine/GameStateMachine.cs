@@ -1,34 +1,36 @@
-using Game.Scripts.Common.StateMachine;
+using Game.Scripts.Infrastructure.RootStateMachine.States;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using System;
 
 namespace Game.Scripts.Infrastructure.RootStateMachine
 {
     public class GameStateMachine
     {
-        private readonly Dictionary<Type, IExitableState> _states;
-        private IExitableState _activeState;
+        private readonly Dictionary<Type, IAsyncState> _states;
+        private IAsyncState _activeState;
+
+        
+        public GameStateMachine(BootState.Factory bootFactory, MenuState.Factory menuFactory, 
+            LobbyState.Factory lobbyFactory, GameplayState.Factory gameFactory)
+        {
+            _states = new Dictionary<Type, IAsyncState>(4)
+            {
+                [typeof(BootState)] = bootFactory.Create(),
+                [typeof(MenuState)] = menuFactory.Create(),
+                [typeof(LobbyState)] = lobbyFactory.Create(),
+                [typeof(GameplayState)] = gameFactory.Create()
+            };
+        }
         
 
-        public void Enter<TState>() where TState : class, IState
-        {
-            var newState = ChangeState<TState>();
-            newState.Enter();
-        }
-
-        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadedState<TPayload>
-        {
-            var newState = ChangeState<TState>();
-            newState.Enter(payload);
-        }
-
-        private TState ChangeState<TState>() where TState : class, IExitableState
+        public async UniTask Enter<TState>() where TState : class, IAsyncState
         {
             _activeState?.Exit();
-            var state = _states[typeof(TState)] as TState;
-            _activeState = state;
             
-            return state;
+            _activeState = _states[typeof(TState)] as TState;
+            
+            await _activeState!.Enter();
         }
     }
 }

@@ -1,8 +1,9 @@
-using System;
-using Zenject;
-using System.Collections.Generic;
+using Game.Scripts.Infrastructure.RootStateMachine.States;
+using Game.Scripts.Infrastructure.RootStateMachine;
 using Game.Scripts.Common.StateMachine;
-using UnityEngine;
+using System.Collections.Generic;
+using Zenject;
+using System;
 
 namespace Game.Scripts.Menu.StateMachine
 {
@@ -10,10 +11,19 @@ namespace Game.Scripts.Menu.StateMachine
     {
         private readonly Dictionary<Type, IState> _states;
         private IState _state;
+
+        private readonly GameStateMachine _gameStateMachine;
         
-        public void Initialize()
+        
+        public MenuStateMachine(GameStateMachine gameStateMachine)
         {
-            Debug.Log($"<color=white>Init Menu </color>");
+            _gameStateMachine = gameStateMachine;
+        }
+        
+        
+        public async void Initialize()
+        {
+            await _gameStateMachine.Enter<MenuState>();
         }
     }
 }
