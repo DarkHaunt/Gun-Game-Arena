@@ -1,6 +1,7 @@
-using Game.Scripts.Infrastructure.RootStateMachine;
 using Game.Scripts.Infrastructure.RootStateMachine.States;
+using Game.Scripts.Infrastructure.RootStateMachine;
 using Game.Scripts.Infrastructure.Scenes;
+using Game.Scripts.Input;
 using UnityEngine;
 using Zenject;
 
@@ -17,10 +18,16 @@ namespace Game.Scripts.Infrastructure.Boot
         
         public override void InstallBindings()
         {
+            RegisterInputSystem();
             RegisterRootStateMachine();
             RegisterSceneLoadingComponents();
-            
+
             Debug.Log($"<color=#76d1e3>ProjectInstaller Executed</color>");
+        }
+
+        private void RegisterInputSystem()
+        {
+            Container.Bind<InputActions>().AsTransient();
         }
 
         private void RegisterRootStateMachine()

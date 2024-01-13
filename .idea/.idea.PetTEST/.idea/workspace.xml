@@ -5,8 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f2ef5ca-2f34-4218-bc87-8db596779ff4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Boot/Game.Scripts.Boot.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Boot/Game.Scripts.Boot.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Boot.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Boot/GameplayEscHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Boot/GameplayEscHandler.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Boot/GameplayInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Boot/GameplayInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Moving.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Moving/CharacterMoveSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Moving/CharacterMoveSystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PetTEST/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PetTEST/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Boot/Bootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Boot/Bootstrapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Boot/ProjectInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Boot/ProjectInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Game.Scripts.Infrastucture.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Game.Scripts.Infrastucture.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Input.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Input.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Input/Input Actions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Input/Input Actions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Input/Input Actions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Input/Input Actions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Input/Input Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Input/Input Actions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Input/Input Actions.inputactions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Input/Input Actions.inputactions.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +38,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/RootStateMachine/States/MenuState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Scenes/SceneLoader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/Scripts/Input/Input Actions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.voody.unileo.lite@3726d31b5a/Runtime/World/Systems/WorldInitSystem.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -104,7 +125,8 @@
       <workItem from="1704743692902" duration="3415000" />
       <workItem from="1704832726796" duration="1099000" />
       <workItem from="1705001776859" duration="3686000" />
-      <workItem from="1705086372762" duration="1515000" />
+      <workItem from="1705086372762" duration="3730000" />
+      <workItem from="1705142513886" duration="2948000" />
     </task>
     <servers />
   </component>

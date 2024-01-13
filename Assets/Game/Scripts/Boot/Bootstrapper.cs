@@ -1,5 +1,5 @@
-using Game.Scripts.Infrastructure.RootStateMachine;
 using Game.Scripts.Infrastructure.RootStateMachine.States;
+using Game.Scripts.Infrastructure.RootStateMachine;
 using Game.Scripts.Infrastructure.Scenes;
 using UnityEngine;
 using Zenject;
