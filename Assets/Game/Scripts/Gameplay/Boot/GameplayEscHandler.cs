@@ -1,7 +1,7 @@
-using Game.Scripts.Gameplay.Input;
 using Game.Scripts.Gameplay.Moving;
-using Leopotam.EcsLite;
+using Game.Scripts.Gameplay.Input;
 using Voody.UniLeo.Lite;
+using Leopotam.EcsLite;
 using Zenject;
 using System;
 
@@ -12,12 +12,12 @@ namespace Game.Scripts.Gameplay.Boot
         private readonly EcsSystems _systems;
 
 
-        public GameplayEscHandler(EcsWorld world, MoveSystem moveSystem, InputSystem inputSystem)
+        public GameplayEscHandler(EcsWorld world, WalkSystem walkSystem, InputSystem inputSystem)
         {
             _systems = new EcsSystems(world);
 
             _systems.Add(inputSystem);
-            _systems.Add(moveSystem);
+            _systems.Add(walkSystem);
         }
 
         

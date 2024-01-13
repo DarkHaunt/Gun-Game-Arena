@@ -23,7 +23,7 @@ namespace Game.Scripts.Gameplay.Boot
         private void BindSystems()
         {
             Container.BindInterfacesAndSelfTo<InputSystem>().AsSingle();
-            Container.BindInterfacesAndSelfTo<MoveSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<WalkSystem>().AsSingle();
         }
     }
 }
