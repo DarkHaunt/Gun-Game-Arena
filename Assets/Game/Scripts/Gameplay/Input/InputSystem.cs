@@ -1,7 +1,8 @@
+using Game.Scripts.Gameplay.Input.Events;
+using Game.Scripts.Gameplay.Move.Down;
 using UnityEngine.InputSystem;
 using Game.Scripts.Input;
 using Leopotam.EcsLite;
-using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Input
 {
@@ -9,8 +10,15 @@ namespace Game.Scripts.Gameplay.Input
     {
         private readonly InputActions _inputActions;
         
-        private EcsPool<InputParams> _pool;
-        private EcsFilter _filter;
+        private EcsPool<InputListener> _listeners;
+        private EcsPool<InputParams> _paramsPool;
+        
+        private EcsPool<AttackEvent> _attackEventPool;
+        private EcsPool<DownEvent> _downEventPool;
+        private EcsPool<JumpEvent> _jumpEventPool;
+        
+        private EcsFilter _listenerFilter;
+        private EcsFilter _paramsFilter;
         
         
         public InputSystem(InputActions inputActions)
@@ -19,41 +27,57 @@ namespace Game.Scripts.Gameplay.Input
         }
 
         
-        public void Init(EcsSystems systems)
+        public void Init(IEcsSystems systems)
         {
             var world = systems.GetWorld();
-            _pool = world.GetPool<InputParams>();
             
-            _filter = world
+            _listeners = world.GetPool<InputListener>();
+            _paramsPool = world.GetPool<InputParams>();
+
+            _listenerFilter = world
+                .Filter<InputListener>()
+                .End();
+            
+            _paramsFilter = world
                 .Filter<InputParams>()
                 .End();
             
             _inputActions.Enable();
             
-            _inputActions.Game.Move.performed += UpdateInput;
-            _inputActions.Game.Move.canceled += CancelInput;
+            _inputActions.Game.Jump.performed += SendJumpEvent;
+            
+            _inputActions.Game.Move.performed += UpdateMoveInput;
+            _inputActions.Game.Move.canceled += CancelMoveInput;
         }
 
-        public void Destroy(EcsSystems systems)
+        public void Destroy(IEcsSystems systems)
         {
             _inputActions.Disable();
             
-            _inputActions.Game.Move.performed -= UpdateInput;
-            _inputActions.Game.Move.canceled -= CancelInput;
+            _inputActions.Game.Jump.performed -= SendJumpEvent;
+            
+            _inputActions.Game.Move.performed -= UpdateMoveInput;
+            _inputActions.Game.Move.canceled -= CancelMoveInput;
         }
 
-        private void CancelInput(InputAction.CallbackContext _)
-            => SetInputDirection(Vector2.zero);
-
-        private void UpdateInput(InputAction.CallbackContext walkContext)
-            => SetInputDirection(walkContext.ReadValue<Vector2>());
-
-        private void SetInputDirection(Vector2 direction)
+        public void SendJumpEvent(InputAction.CallbackContext _)
         {
-            foreach (var i in _filter)
+            foreach (var i in _listenerFilter)
+                _jumpEventPool.Add(i);
+        }
+
+        private void CancelMoveInput(InputAction.CallbackContext _)
+            => SetInputDirection(0f);
+
+        private void UpdateMoveInput(InputAction.CallbackContext walkContext)
+            => SetInputDirection(walkContext.ReadValue<float>());
+
+        private void SetInputDirection(float direction)
+        {
+            foreach (var i in _paramsFilter)
             {
-                ref var input = ref _pool.Get(i);
-                input.Direction = direction;
+                ref var input = ref _paramsPool.Get(i);
+                input.XDirection = direction;
             }
         }
     }

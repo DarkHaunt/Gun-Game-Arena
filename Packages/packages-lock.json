@@ -1,11 +1,25 @@
 {
   "dependencies": {
-    "com.leopotam.ecslite": {
-      "version": "https://github.com/voody2506/ecslite.git",
+    "com.anbi.leoecslite.entityconverter": {
+      "version": "https://github.com/AndreyBirchenko/LeoEcsLiteEntityConverter.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "438b839bc1d7fff5ccb2ba99b548f4ef9711f299"
+      "hash": "99f0afcfbd925a0a833c7db8e06bd2aab4e0577f"
+    },
+    "com.leopotam.ecslite": {
+      "version": "https://github.com/Leopotam/ecslite.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "984856664a3ae7cff5b8a16eb7ab26ec02cb47d5"
+    },
+    "com.leopotam.ecslite.extendedsystems": {
+      "version": "https://github.com/Leopotam/ecslite-extendedsystems.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "007a5af4aaa1c4993523232f306a5f02e1de7c0f"
     },
     "com.unity.collab-proxy": {
       "version": "2.2.0",
@@ -89,13 +103,6 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
-    },
-    "com.voody.unileo.lite": {
-      "version": "https://github.com/voody2506/UniLeo-Lite.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "3726d31b5acbdf683edb372ea1efb74a12321c17"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

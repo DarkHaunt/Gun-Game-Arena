@@ -6,6 +6,6 @@ namespace Game.Scripts.Gameplay.Input
     [Serializable]
     public struct InputParams
     {
-        public Vector2 Direction;
+        [HideInInspector] public float XDirection;
     }
 }

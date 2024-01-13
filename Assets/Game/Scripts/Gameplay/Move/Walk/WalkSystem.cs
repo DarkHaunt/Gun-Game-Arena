@@ -4,14 +4,15 @@ using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Moving
 {
-    public class WalkSystem : IEcsPreInitSystem, IEcsRunSystem
+    public class WalkSystem : IEcsInitSystem, IEcsRunSystem
     {
         private EcsPool<InputParams> _inputPool;
         private EcsPool<WalkParams> _walkPool;
         
         private EcsFilter _filter;
-        
-        public void PreInit(EcsSystems systems)
+
+
+        public void Init(IEcsSystems systems)
         {
             var world = systems.GetWorld();
             _inputPool = world.GetPool<InputParams>();
@@ -25,14 +26,14 @@ namespace Game.Scripts.Gameplay.Moving
             Debug.Log($"<color=white>Move Activate</color>");
         }
 
-        public void Run(EcsSystems systems)
+        public void Run(IEcsSystems systems)
         {
             foreach (var entity in _filter)
             {
                 ref var walkParams = ref _walkPool.Get(entity);
                 ref var inputParams = ref _inputPool.Get(entity);
 
-                walkParams.Body.velocity = inputParams.Direction * walkParams.Speed;
+                walkParams.Body.velocity = new Vector2(inputParams.XDirection * walkParams.Speed, 0f);
             }
         }
     }
