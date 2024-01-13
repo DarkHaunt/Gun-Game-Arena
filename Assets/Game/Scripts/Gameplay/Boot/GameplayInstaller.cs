@@ -1,15 +1,29 @@
+using Game.Scripts.Gameplay.Input;
 using Game.Scripts.Gameplay.Moving;
+using Leopotam.EcsLite;
 using Zenject;
 
-namespace Game.Scripts.Gameplay
+namespace Game.Scripts.Gameplay.Boot
 {
     public class GameplayInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<GameplayEscHandler>().AsSingle();
+            BindEcsCore();
+            
+            BindSystems();
+        }
 
-            Container.BindInterfacesTo<CharacterMoveSystem>().AsSingle();
+        private void BindEcsCore()
+        {
+            Container.BindInterfacesTo<GameplayEscHandler>().AsSingle();
+            Container.Bind<EcsWorld>().AsSingle();
+        }
+
+        private void BindSystems()
+        {
+            Container.BindInterfacesAndSelfTo<InputSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MoveSystem>().AsSingle();
         }
     }
 }
