@@ -33,8 +33,6 @@ namespace Game.Scripts.Gameplay.Moving
                 ref var inputParams = ref _inputPool.Get(entity);
 
                 walkParams.Body.velocity = inputParams.Direction * walkParams.Speed;
-
-                Debug.Log($"<color=white>Log</color>");
             }
         }
     }

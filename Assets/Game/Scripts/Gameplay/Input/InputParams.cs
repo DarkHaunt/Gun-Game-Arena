@@ -1,9 +1,10 @@
-using Leopotam.EcsLite;
 using UnityEngine;
+using System;
 
 namespace Game.Scripts.Gameplay.Input
 {
-    internal struct InputParams
+    [Serializable]
+    public struct InputParams
     {
         public Vector2 Direction;
     }
