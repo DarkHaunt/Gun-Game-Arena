@@ -6,8 +6,8 @@ namespace Game.Scripts.Gameplay.Input
 {
     public class JumpSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<JumpParams, JumpEvent>> _filter;
-        private readonly EcsPoolInject<JumpParams> _pool;
+        private readonly EcsFilterInject<Inc<JumpParams, JumpEvent>> _filter = default;
+        private readonly EcsPoolInject<JumpParams> _pool = default;
 
         
         public void Run(IEcsSystems systems)

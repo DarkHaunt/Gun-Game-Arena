@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using System;
 
 namespace Game.Scripts.Gameplay.Input
 {
@@ -7,7 +7,6 @@ namespace Game.Scripts.Gameplay.Input
     public struct JumpParams
     {
         public Rigidbody2D Body;
-        public Vector2 Direction;
         public float Force;
     }
 }

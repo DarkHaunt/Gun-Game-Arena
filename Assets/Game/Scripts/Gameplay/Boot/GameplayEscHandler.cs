@@ -5,6 +5,7 @@ using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
 using Zenject;
 using System;
+using Game.Scripts.Gameplay.Input.Events;
 using static Game.Scripts.Gameplay.StaticData.GameplayStaticData;
 
 namespace Game.Scripts.Gameplay.Boot
@@ -14,19 +15,22 @@ namespace Game.Scripts.Gameplay.Boot
         private readonly EcsSystems _systems;
 
 
-        public GameplayEscHandler(EcsWorld defaultWorld, WalkSystem walkSystem, InputSystem inputSystem)
+        public GameplayEscHandler(EcsWorld defaultWorld, WalkSystem walkSystem, InputSystem inputSystem, 
+            JumpSystem jumpSystem, EventsCleanUpSystem cleanUpSystem)
         {
             _systems = new EcsSystems(defaultWorld);
 
-            _systems.AddWorld(new EcsWorld(), EventWorld);
-            _systems.Add(inputSystem);
-            _systems.Add(walkSystem);
+            _systems
+                .AddWorld(new EcsWorld(), EventWorld)
+                .Add(inputSystem)
+                .Add(jumpSystem)
+                .Add(walkSystem)
+                .Add(cleanUpSystem);
         }
 
         
         public void Initialize()
         {
-            var eventWorld = new EcsWorld();
             _systems
                 .ConvertScene()
                 .Inject()

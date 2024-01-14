@@ -1,4 +1,5 @@
 using Game.Scripts.Gameplay.Input;
+using Game.Scripts.Gameplay.Input.Events;
 using Game.Scripts.Gameplay.Moving;
 using Leopotam.EcsLite;
 using Zenject;
@@ -22,8 +23,11 @@ namespace Game.Scripts.Gameplay.Boot
 
         private void BindSystems()
         {
+            Container.BindInterfacesAndSelfTo<EventsCleanUpSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<InputSystem>().AsSingle();
+            
             Container.BindInterfacesAndSelfTo<WalkSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<JumpSystem>().AsSingle();
         }
     }
 }
