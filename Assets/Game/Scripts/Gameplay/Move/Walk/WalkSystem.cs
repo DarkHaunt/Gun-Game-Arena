@@ -1,16 +1,16 @@
-using Game.Scripts.Gameplay.Input;
-using Leopotam.EcsLite.Di;
+using Game.Scripts.Gameplay.Input.Move;
 using Leopotam.EcsLite;
+using Leopotam.EcsLite.Di;
 using UnityEngine;
 
-namespace Game.Scripts.Gameplay.Moving
+namespace Game.Scripts.Gameplay.Move.Walk
 {
     public class WalkSystem : IEcsRunSystem
     {
-        private readonly EcsPoolInject<InputParams> _inputPool = default;
-        private readonly EcsPoolInject<WalkParams> _walkPool = default;
+        private readonly EcsPoolInject<InputMove> _inputPool = default;
+        private readonly EcsPoolInject<Walk> _walkPool = default;
         
-        private readonly EcsFilterInject<Inc<InputParams, WalkParams>> _filter = default;
+        private readonly EcsFilterInject<Inc<InputMove, Walk>> _filter = default;
 
         private Vector2 _cachedForce;
 

@@ -1,10 +1,10 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
-namespace Game.Scripts.Gameplay.Input
+namespace Game.Scripts.Gameplay.Input.Move
 {
     [Serializable]
-    public struct InputParams
+    public struct InputMove
     {
         [HideInInspector] public float XDirection;
     }

@@ -1,10 +1,10 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
-namespace Game.Scripts.Gameplay.Input
+namespace Game.Scripts.Gameplay.Move.Jump
 {
     [Serializable]
-    public struct JumpParams
+    public struct Jump
     {
         public Rigidbody2D Body;
         public float Force;

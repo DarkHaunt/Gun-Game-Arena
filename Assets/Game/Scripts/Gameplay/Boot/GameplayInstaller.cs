@@ -1,6 +1,7 @@
-using Game.Scripts.Gameplay.Input;
-using Game.Scripts.Gameplay.Input.Events;
-using Game.Scripts.Gameplay.Moving;
+using Game.Scripts.Gameplay.Input.Event_Handling;
+using Game.Scripts.Gameplay.Input.Move;
+using Game.Scripts.Gameplay.Move.Jump;
+using Game.Scripts.Gameplay.Move.Walk;
 using Leopotam.EcsLite;
 using Zenject;
 
@@ -12,7 +13,8 @@ namespace Game.Scripts.Gameplay.Boot
         {
             BindEcsCore();
             
-            BindSystems();
+            BindInputSystems();
+            BindMoveSystems();
         }
 
         private void BindEcsCore()
@@ -21,11 +23,15 @@ namespace Game.Scripts.Gameplay.Boot
             Container.Bind<EcsWorld>().AsSingle();
         }
 
-        private void BindSystems()
+        private void BindInputSystems()
         {
-            Container.BindInterfacesAndSelfTo<EventsCleanUpSystem>().AsSingle();
-            Container.BindInterfacesAndSelfTo<InputSystem>().AsSingle();
-            
+            Container.BindInterfacesAndSelfTo<InputEventsCleanUpSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<InputEventsSendSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<InputMoveHandleSystem>().AsSingle();
+        }
+
+        private void BindMoveSystems()
+        {
             Container.BindInterfacesAndSelfTo<WalkSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<JumpSystem>().AsSingle();
         }

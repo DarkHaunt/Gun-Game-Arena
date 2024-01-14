@@ -1,13 +1,14 @@
-using Leopotam.EcsLite.Di;
+using Game.Scripts.Gameplay.Input.Event_Handling.Events;
 using Leopotam.EcsLite;
+using Leopotam.EcsLite.Di;
 using UnityEngine;
 
-namespace Game.Scripts.Gameplay.Input
+namespace Game.Scripts.Gameplay.Move.Jump
 {
     public class JumpSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<JumpParams, JumpEvent>> _filter = default;
-        private readonly EcsPoolInject<JumpParams> _pool = default;
+        private readonly EcsFilterInject<Inc<Jump, JumpEvent>> _filter = default;
+        private readonly EcsPoolInject<Jump> _pool = default;
 
         
         public void Run(IEcsSystems systems)
