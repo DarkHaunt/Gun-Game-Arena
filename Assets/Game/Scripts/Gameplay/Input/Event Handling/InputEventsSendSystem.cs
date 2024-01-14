@@ -1,35 +1,33 @@
 using Game.Scripts.Gameplay.Input.Event_Handling.Events;
+using UnityEngine.InputSystem;
+using Leopotam.EcsLite.Di;
 using Game.Scripts.Input;
 using Leopotam.EcsLite;
-using Leopotam.EcsLite.Di;
-using UnityEngine;
-using UnityEngine.InputSystem;
-using static Game.Scripts.Gameplay.StaticData.StaticData;
 
 namespace Game.Scripts.Gameplay.Input.Event_Handling
 {
     public class InputEventsSendSystem : IEcsInitSystem, IEcsDestroySystem
     {
-        private readonly EcsPoolInject<AttackEvent> _attackEvents = EventWorld;
-        private readonly EcsPoolInject<DownEvent> _downEvents = EventWorld;
-        private readonly EcsPoolInject<JumpEvent> _jumpEvents = EventWorld;
-        
-        private readonly EcsFilterInject<Inc<InputEventsListener>> _listeners = EventWorld;
-        
+        private readonly EcsPoolInject<AttackEvent> _attackEvents = default;
+        private readonly EcsPoolInject<DownEvent> _downEvents = default;
+        private readonly EcsPoolInject<JumpEvent> _jumpEvents = default;
+
+        private readonly EcsFilterInject<Inc<InputEventsListener>> _listeners = default;
+
         private readonly InputActions _inputActions;
 
-        
+
         public InputEventsSendSystem(InputActions inputActions)
         {
             _inputActions = inputActions;
         }
 
-        
+
         public void Init(IEcsSystems systems)
         {
             _inputActions.Enable();
-            _inputActions.Game.Attack.performed += AttackEventSend;
-            _inputActions.Game.Down.performed += DownEventSend;
+            // _inputActions.Game.Attack.performed += AttackEventSend;
+            //  _inputActions.Game.Down.performed += DownEventSend;
             _inputActions.Game.Jump.performed += JumpEventSend;
         }
 
@@ -55,8 +53,6 @@ namespace Game.Scripts.Gameplay.Input.Event_Handling
 
         private void JumpEventSend(InputAction.CallbackContext _)
         {
-            Debug.Log($"<color=white>Entites - {_listeners.Value.GetEntitiesCount()}</color>");
-
             foreach (var i in _listeners.Value)
                 _jumpEvents.Value.Add(i);
         }

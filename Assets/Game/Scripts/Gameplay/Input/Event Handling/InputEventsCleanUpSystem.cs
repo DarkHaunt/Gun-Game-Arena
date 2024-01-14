@@ -1,19 +1,18 @@
 using Game.Scripts.Gameplay.Input.Event_Handling.Events;
-using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using static Game.Scripts.Gameplay.StaticData.StaticData;
+using Leopotam.EcsLite;
 
 namespace Game.Scripts.Gameplay.Input.Event_Handling
 {
     public class InputEventsCleanUpSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<AttackEvent>> _attackFilter = EventWorld;
-        private readonly EcsFilterInject<Inc<JumpEvent>> _jumpFilter = EventWorld;
-        private readonly EcsFilterInject<Inc<DownEvent>> _downFilter = EventWorld;
+        private readonly EcsFilterInject<Inc<AttackEvent>> _attackFilter = default;
+        private readonly EcsFilterInject<Inc<JumpEvent>> _jumpFilter = default;
+        private readonly EcsFilterInject<Inc<DownEvent>> _downFilter = default;
         
-        private readonly EcsPoolInject<AttackEvent> _attackPool = EventWorld;
-        private readonly EcsPoolInject<JumpEvent> _jumpPool = EventWorld;
-        private readonly EcsPoolInject<DownEvent> _downPool = EventWorld;
+        private readonly EcsPoolInject<AttackEvent> _attackPool = default;
+        private readonly EcsPoolInject<JumpEvent> _jumpPool = default;
+        private readonly EcsPoolInject<DownEvent> _downPool = default;
         
         
         public void Run(IEcsSystems systems)

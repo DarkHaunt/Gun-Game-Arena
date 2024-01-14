@@ -1,12 +1,12 @@
+using Game.Scripts.Gameplay.Input.Event_Handling;
 using AB_Utility.FromSceneToEntityConverter;
+using Game.Scripts.Gameplay.Input.Move;
+using Game.Scripts.Gameplay.Move.Jump;
+using Game.Scripts.Gameplay.Move.Walk;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
 using Zenject;
 using System;
-using Game.Scripts.Gameplay.Input.Event_Handling;
-using Game.Scripts.Gameplay.Input.Move;
-using Game.Scripts.Gameplay.Move.Jump;
-using Game.Scripts.Gameplay.Move.Walk;
 using static Game.Scripts.Gameplay.StaticData.StaticData;
 
 namespace Game.Scripts.Gameplay.Boot
@@ -20,7 +20,6 @@ namespace Game.Scripts.Gameplay.Boot
             JumpSystem jumpSystem, InputEventsCleanUpSystem cleanUpSystem, InputEventsSendSystem sendSystem)
         {
             _systems = new EcsSystems(defaultWorld);
-
             _systems
                 .AddWorld(new EcsWorld(), EventWorld)
                 .Add(sendSystem)
@@ -43,6 +42,12 @@ namespace Game.Scripts.Gameplay.Boot
             => _systems.Run();
 
         public void Dispose()
-            => _systems.Destroy();
+        {
+            _systems.Destroy();
+            
+            _systems
+                .GetWorld()
+                .Destroy();
+        }
     }
 }
