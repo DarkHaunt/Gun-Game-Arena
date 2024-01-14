@@ -1,29 +1,20 @@
+using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Input
 {
-    public class JumpSystem : IEcsInitSystem, IEcsRunSystem
+    public class JumpSystem : IEcsRunSystem
     {
-        private EcsFilter _filter;
-        private EcsPool<JumpParams> _pool;
+        private readonly EcsFilterInject<Inc<JumpParams, JumpEvent>> _filter;
+        private readonly EcsPoolInject<JumpParams> _pool;
 
         
-        public void Init(IEcsSystems systems)
-        {
-            var world = systems.GetWorld();
-
-            _filter = world
-                .Filter<JumpParams>()
-                .Inc<JumpEvent>()
-                .End();
-        }
-
         public void Run(IEcsSystems systems)
         {
-            foreach (var i in _filter)
+            foreach (var i in _filter.Value)
             {
-                ref var entity = ref _pool.Get(i);
+                ref var entity = ref _pool.Value.Get(i);
                 
                 entity.Body.AddForce(Vector2.up * entity.Force);
             }

@@ -1,37 +1,24 @@
 using Game.Scripts.Gameplay.Input;
+using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Moving
 {
-    public class WalkSystem : IEcsInitSystem, IEcsRunSystem
+    public class WalkSystem : IEcsRunSystem
     {
-        private EcsPool<InputParams> _inputPool;
-        private EcsPool<WalkParams> _walkPool;
+        private readonly EcsPoolInject<InputParams> _inputPool = default;
+        private readonly EcsPoolInject<WalkParams> _walkPool = default;
         
-        private EcsFilter _filter;
+        private readonly EcsFilterInject<Inc<InputParams, WalkParams>> _filter = default;
 
-
-        public void Init(IEcsSystems systems)
-        {
-            var world = systems.GetWorld();
-            _inputPool = world.GetPool<InputParams>();
-            _walkPool = world.GetPool<WalkParams>();
-            
-            _filter = world
-                .Filter<WalkParams>()
-                .Inc<InputParams>()
-                .End();
-            
-            Debug.Log($"<color=white>Move Activate</color>");
-        }
 
         public void Run(IEcsSystems systems)
         {
-            foreach (var entity in _filter)
+            foreach (var entity in _filter.Value)
             {
-                ref var walkParams = ref _walkPool.Get(entity);
-                ref var inputParams = ref _inputPool.Get(entity);
+                ref var walkParams = ref _walkPool.Value.Get(entity);
+                ref var inputParams = ref _inputPool.Value.Get(entity);
 
                 walkParams.Body.velocity = new Vector2(inputParams.XDirection * walkParams.Speed, 0f);
             }

@@ -1,9 +1,11 @@
 using AB_Utility.FromSceneToEntityConverter;
 using Game.Scripts.Gameplay.Moving;
 using Game.Scripts.Gameplay.Input;
+using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
 using Zenject;
 using System;
+using static Game.Scripts.Gameplay.StaticData.GameplayStaticData;
 
 namespace Game.Scripts.Gameplay.Boot
 {
@@ -12,10 +14,11 @@ namespace Game.Scripts.Gameplay.Boot
         private readonly EcsSystems _systems;
 
 
-        public GameplayEscHandler(EcsWorld world, WalkSystem walkSystem, InputSystem inputSystem)
+        public GameplayEscHandler(EcsWorld defaultWorld, WalkSystem walkSystem, InputSystem inputSystem)
         {
-            _systems = new EcsSystems(world);
+            _systems = new EcsSystems(defaultWorld);
 
+            _systems.AddWorld(new EcsWorld(), EventWorld);
             _systems.Add(inputSystem);
             _systems.Add(walkSystem);
         }
@@ -23,8 +26,10 @@ namespace Game.Scripts.Gameplay.Boot
         
         public void Initialize()
         {
+            var eventWorld = new EcsWorld();
             _systems
                 .ConvertScene()
+                .Inject()
                 .Init();
         }
 

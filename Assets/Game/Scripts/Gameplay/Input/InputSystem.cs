@@ -1,8 +1,9 @@
 using Game.Scripts.Gameplay.Input.Events;
-using Game.Scripts.Gameplay.Move.Down;
 using UnityEngine.InputSystem;
+using Leopotam.EcsLite.Di;
 using Game.Scripts.Input;
 using Leopotam.EcsLite;
+using static Game.Scripts.Gameplay.StaticData.GameplayStaticData;
 
 namespace Game.Scripts.Gameplay.Input
 {
@@ -10,15 +11,13 @@ namespace Game.Scripts.Gameplay.Input
     {
         private readonly InputActions _inputActions;
         
-        private EcsPool<InputListener> _listeners;
-        private EcsPool<InputParams> _paramsPool;
+        private readonly EcsPoolInject<AttackEvent> _attackEventPool = EventWorld;
+        private readonly EcsPoolInject<AttackEvent> _downEventPool = EventWorld;
+        private readonly EcsPoolInject<AttackEvent> _jumpEventPool = EventWorld;
+        private readonly EcsPoolInject<InputParams> _paramsPool = default;
         
-        private EcsPool<AttackEvent> _attackEventPool;
-        private EcsPool<DownEvent> _downEventPool;
-        private EcsPool<JumpEvent> _jumpEventPool;
-        
-        private EcsFilter _listenerFilter;
-        private EcsFilter _paramsFilter;
+        private readonly EcsFilterInject<Inc<InputListener>> _listenerFilter = default;
+        private readonly EcsFilterInject<Inc<InputParams>> _paramsFilter;
         
         
         public InputSystem(InputActions inputActions)
@@ -29,19 +28,6 @@ namespace Game.Scripts.Gameplay.Input
         
         public void Init(IEcsSystems systems)
         {
-            var world = systems.GetWorld();
-            
-            _listeners = world.GetPool<InputListener>();
-            _paramsPool = world.GetPool<InputParams>();
-
-            _listenerFilter = world
-                .Filter<InputListener>()
-                .End();
-            
-            _paramsFilter = world
-                .Filter<InputParams>()
-                .End();
-            
             _inputActions.Enable();
             
             _inputActions.Game.Jump.performed += SendJumpEvent;
@@ -60,10 +46,10 @@ namespace Game.Scripts.Gameplay.Input
             _inputActions.Game.Move.canceled -= CancelMoveInput;
         }
 
-        public void SendJumpEvent(InputAction.CallbackContext _)
+        private void SendJumpEvent(InputAction.CallbackContext _)
         {
-            foreach (var i in _listenerFilter)
-                _jumpEventPool.Add(i);
+            foreach (var i in _listenerFilter.Value)
+                _jumpEventPool.Value.Add(i);
         }
 
         private void CancelMoveInput(InputAction.CallbackContext _)
@@ -74,9 +60,9 @@ namespace Game.Scripts.Gameplay.Input
 
         private void SetInputDirection(float direction)
         {
-            foreach (var i in _paramsFilter)
+            foreach (var i in _paramsFilter.Value)
             {
-                ref var input = ref _paramsPool.Get(i);
+                ref var input = ref _paramsPool.Value.Get(i);
                 input.XDirection = direction;
             }
         }

@@ -1,8 +1,9 @@
 {
   "dependencies": {
-    "com.leopotam.ecslite.extendedsystems": "https://github.com/Leopotam/ecslite-extendedsystems.git",
-    "com.leopotam.ecslite": "https://github.com/Leopotam/ecslite.git",
     "com.anbi.leoecslite.entityconverter": "https://github.com/AndreyBirchenko/LeoEcsLiteEntityConverter.git",
+    "com.leopotam.ecslite.extendedsystems": "https://github.com/Leopotam/ecslite-extendedsystems.git",
+    "com.leopotam.ecslite.di": "https://github.com/Leopotam/ecslite-di.git",
+    "com.leopotam.ecslite": "https://github.com/Leopotam/ecslite.git",
     "com.unity.collab-proxy": "2.2.0",
     "com.unity.ide.rider": "3.0.27",
     "com.unity.inputsystem": "1.7.0",

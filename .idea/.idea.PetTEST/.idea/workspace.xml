@@ -5,38 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f2ef5ca-2f34-4218-bc87-8db596779ff4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/Events.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/Events/AttackEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/Events/AttackEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/InputListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/InputListener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/InputParamsConverter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Down/DownSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Down/DownSystem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Jump/JumpParams.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Jump/JumpParams.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Jump/JumpParamsConverter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Jump/JumpParamsConverter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Jump/JumpSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Jump/JumpSystem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Walk/WalkParamsConverter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PetTEST/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PetTEST/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Boot/GameplayEscHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Boot/GameplayEscHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Game.Scripts.Gameplay.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Game.Scripts.Gameplay.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/InputParams.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/InputParams.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/InputProvider.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/InputProvider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/InputParamsConverter.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/InputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/InputSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Down/DownEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/Events/DownEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Down/DownEvent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/Events/DownEvent.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Jump/JumpEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/Events/JumpEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Jump/JumpEvent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Input/Events/JumpEvent.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Walk/WalkProvider.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Walk/WalkProvider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Walk/WalkParamsConverter.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Walk/WalkSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Walk/WalkSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Input/Input Actions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Input/Input Actions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Input/Input Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Input/Input Actions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Jump/JumpSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Jump/JumpSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
@@ -52,6 +22,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Game/Scripts/Gameplay/Move/Walk/WalkSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/RootStateMachine/States/MenuState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Scripts/Infrastructure/Scenes/SceneLoader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.leopotam.ecslite.di@0709e936b4/src/extensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.leopotam.ecslite.extendedsystems@007a5af4aa/src/systems.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Actions/InputActionState.cs" root0="SKIP_HIGHLIGHTING" />
@@ -141,7 +112,7 @@
       <workItem from="1704832726796" duration="1099000" />
       <workItem from="1705001776859" duration="3686000" />
       <workItem from="1705086372762" duration="3730000" />
-      <workItem from="1705142513886" duration="15719000" />
+      <workItem from="1705142513886" duration="17643000" />
     </task>
     <servers />
   </component>

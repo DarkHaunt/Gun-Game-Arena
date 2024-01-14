@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8576830320449742444}
   - component: {fileID: 8344016292419840077}
   - component: {fileID: 5342509048153636610}
-  - component: {fileID: 4959038821860200607}
+  - component: {fileID: 7252552930905197397}
   - component: {fileID: 2713796729437144551}
   - component: {fileID: 1615957127295565704}
   m_Layer: 0
@@ -115,7 +115,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4959038821860200607
+--- !u!114 &7252552930905197397
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,11 +124,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7603185986567965700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236f59dc59fdd4c8a846a7fc5bb735ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 09d40b90da6b42589971320ba7a7bc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  convertMode: 0
-  customWorld: 
+  _converters:
+  - {fileID: 2713796729437144551}
+  - {fileID: 1615957127295565704}
+  _destroyAfterConversion: 1
 --- !u!114 &2713796729437144551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9e4006463747a894d02c29f2e3e70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value:
+  _component:
     Body: {fileID: 8344016292419840077}
     Speed: 5
 --- !u!114 &1615957127295565704
@@ -156,5 +158,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd025cdccd54c2192d37ef77134a918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value:
-    Direction: {x: 0, y: 0}
+  _component:
+    XDirection: 0
