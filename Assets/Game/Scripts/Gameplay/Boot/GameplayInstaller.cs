@@ -25,7 +25,6 @@ namespace Game.Scripts.Gameplay.Boot
 
         private void BindInputSystems()
         {
-            Container.BindInterfacesAndSelfTo<InputEventsCleanUpSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<InputEventsSendSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<InputMoveHandleSystem>().AsSingle();
         }

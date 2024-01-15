@@ -1,5 +1,7 @@
+using Game.Scripts.Gameplay.Input.Event_Handling.Events;
 using Game.Scripts.Gameplay.Input.Event_Handling;
 using AB_Utility.FromSceneToEntityConverter;
+using Leopotam.EcsLite.ExtendedSystems;
 using Game.Scripts.Gameplay.Input.Move;
 using Game.Scripts.Gameplay.Move.Jump;
 using Game.Scripts.Gameplay.Move.Walk;
@@ -7,7 +9,7 @@ using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
 using Zenject;
 using System;
-using static Game.Scripts.Gameplay.StaticData.StaticData;
+using static Game.Scripts.Gameplay.StaticData.Indents;
 
 namespace Game.Scripts.Gameplay.Boot
 {
@@ -17,7 +19,7 @@ namespace Game.Scripts.Gameplay.Boot
 
 
         public GameplayEscHandler(EcsWorld defaultWorld, WalkSystem walkSystem, InputMoveHandleSystem moveHandleSystem, 
-            JumpSystem jumpSystem, InputEventsCleanUpSystem cleanUpSystem, InputEventsSendSystem sendSystem)
+            JumpSystem jumpSystem, InputEventsSendSystem sendSystem)
         {
             _systems = new EcsSystems(defaultWorld);
             _systems
@@ -25,10 +27,19 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(sendSystem)
                 .Add(moveHandleSystem)
                 .Add(jumpSystem)
-                .Add(walkSystem)
-                .Add(cleanUpSystem);
+                .Add(walkSystem);
+
+            SetUpCleanupEvents();
         }
 
+
+        private void SetUpCleanupEvents()
+        {
+            _systems
+                .DelHere<JumpEvent>()
+                .DelHere<AttackEvent>()
+                .DelHere<DownEvent>();
+        }
         
         public void Initialize()
         {

@@ -7,5 +7,6 @@ namespace Game.Scripts.Gameplay.Move.Grounding
     public struct Grounding
     {
         public LayerMask GroundLayer;
+        public Collider2D GroundChecker;
     }
 }
