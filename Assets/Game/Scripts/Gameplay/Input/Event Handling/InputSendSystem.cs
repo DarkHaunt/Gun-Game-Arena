@@ -14,29 +14,23 @@ namespace Game.Scripts.Gameplay.Input.Event_Handling
 
         private readonly EcsFilterInject<Inc<InputEventsListener>> _listeners = default;
 
-        private readonly InputActions _inputActions;
-
-
-        public InputEventsSendSystem(InputActions inputActions)
-        {
-            _inputActions = inputActions;
-        }
+        private readonly EcsCustomInject<InputActions> _inputActions;
 
 
         public void Init(IEcsSystems systems)
         {
-            _inputActions.Enable();
-            // _inputActions.Game.Attack.performed += AttackEventSend;
-            //  _inputActions.Game.Down.performed += DownEventSend;
-            _inputActions.Game.Jump.performed += JumpEventSend;
+            _inputActions.Value.Enable();
+            _inputActions.Value.Game.Attack.performed += AttackEventSend;
+            _inputActions.Value.Game.Down.performed += DownEventSend;
+            _inputActions.Value.Game.Jump.performed += JumpEventSend;
         }
 
         public void Destroy(IEcsSystems systems)
         {
-            _inputActions.Disable();
-            _inputActions.Game.Attack.performed -= AttackEventSend;
-            _inputActions.Game.Down.performed -= DownEventSend;
-            _inputActions.Game.Jump.performed -= JumpEventSend;
+            _inputActions.Value.Disable();
+            _inputActions.Value.Game.Attack.performed -= AttackEventSend;
+            _inputActions.Value.Game.Down.performed -= DownEventSend;
+            _inputActions.Value.Game.Jump.performed -= JumpEventSend;
         }
 
         private void AttackEventSend(InputAction.CallbackContext _)

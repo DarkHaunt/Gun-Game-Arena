@@ -5,58 +5,62 @@ using Leopotam.EcsLite.ExtendedSystems;
 using Game.Scripts.Gameplay.Input.Move;
 using Game.Scripts.Gameplay.Move.Jump;
 using Game.Scripts.Gameplay.Move.Walk;
+using Game.Scripts.Input;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
-using Zenject;
-using System;
-using static Game.Scripts.Gameplay.StaticData.Indents;
+using LeoEcsPhysics;
+using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Boot
 {
-    public class GameplayEscHandler : ITickable, IDisposable, IInitializable
+    public class GameplayEscHandler : MonoBehaviour
     {
-        private readonly EcsSystems _systems;
+        private EcsSystems _fixedUpdateSystems;
 
 
-        public GameplayEscHandler(EcsWorld defaultWorld, WalkSystem walkSystem, InputMoveHandleSystem moveHandleSystem, 
-            JumpSystem jumpSystem, InputEventsSendSystem sendSystem)
+        private void Start()
         {
-            _systems = new EcsSystems(defaultWorld);
-            _systems
-                .AddWorld(new EcsWorld(), EventWorld)
-                .Add(sendSystem)
-                .Add(moveHandleSystem)
-                .Add(jumpSystem)
-                .Add(walkSystem);
+            var physicWorld = new EcsWorld();
+
+            _fixedUpdateSystems = new EcsSystems(physicWorld);
+            _fixedUpdateSystems
+                .Add(new InputEventsSendSystem())
+                .Add(new InputMoveHandleSystem())
+                .Add(new WalkSystem())
+                .Add(new JumpSystem());
+            
+            EcsPhysicsEvents.ecsWorld = physicWorld;
 
             SetUpCleanupEvents();
+            Initialize();
         }
-
 
         private void SetUpCleanupEvents()
         {
-            _systems
-                .DelHere<JumpEvent>()
+            _fixedUpdateSystems
                 .DelHere<AttackEvent>()
-                .DelHere<DownEvent>();
+                .DelHere<JumpEvent>()
+                .DelHere<DownEvent>()
+                .DelHerePhysics();
         }
         
-        public void Initialize()
+        private void Initialize()
         {
-            _systems
+            Debug.Log($"<color=white>Init</color>");
+            
+            _fixedUpdateSystems
                 .ConvertScene()
-                .Inject()
+                .Inject(new InputActions())
                 .Init();
         }
 
-        public void Tick()
-            => _systems.Run();
+        private void FixedUpdate()
+            => _fixedUpdateSystems?.Run();
 
-        public void Dispose()
+        private void OnDestroy()
         {
-            _systems.Destroy();
-            
-            _systems
+            _fixedUpdateSystems.Destroy();
+            _fixedUpdateSystems
                 .GetWorld()
                 .Destroy();
         }
