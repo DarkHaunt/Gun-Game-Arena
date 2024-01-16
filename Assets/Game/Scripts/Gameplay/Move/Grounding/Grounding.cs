@@ -6,7 +6,7 @@ namespace Game.Scripts.Gameplay.Move.Grounding
     [Serializable]
     public struct Grounding
     {
-        public LayerMask GroundLayer;
-        public Collider2D GroundChecker;
+        public LayerMask groundLayer;
+        public bool isGrounded;
     }
 }

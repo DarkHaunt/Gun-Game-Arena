@@ -1,6 +1,7 @@
 using Game.Scripts.Gameplay.Input.Event_Handling.Events;
 using Game.Scripts.Gameplay.Input.Event_Handling;
 using AB_Utility.FromSceneToEntityConverter;
+using Game.Scripts.Gameplay.Move.Grounding;
 using Leopotam.EcsLite.ExtendedSystems;
 using Game.Scripts.Gameplay.Input.Move;
 using Game.Scripts.Gameplay.Move.Jump;
@@ -26,6 +27,7 @@ namespace Game.Scripts.Gameplay.Boot
             _fixedUpdateSystems
                 .Add(new InputEventsSendSystem())
                 .Add(new InputMoveHandleSystem())
+                .Add(new GroundSystem())
                 .Add(new WalkSystem())
                 .Add(new JumpSystem());
             
@@ -46,8 +48,6 @@ namespace Game.Scripts.Gameplay.Boot
         
         private void Initialize()
         {
-            Debug.Log($"<color=white>Init</color>");
-            
             _fixedUpdateSystems
                 .ConvertScene()
                 .Inject(new InputActions())
@@ -59,6 +59,8 @@ namespace Game.Scripts.Gameplay.Boot
 
         private void OnDestroy()
         {
+            EcsPhysicsEvents.ecsWorld = null;
+            
             _fixedUpdateSystems.Destroy();
             _fixedUpdateSystems
                 .GetWorld()
