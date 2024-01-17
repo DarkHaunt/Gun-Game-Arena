@@ -10,10 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5404364084675565733}
   - component: {fileID: 2195165140192359724}
-  - component: {fileID: 3458834645096208158}
   - component: {fileID: 9117821104294268871}
   - component: {fileID: 2087604834225426124}
-  - component: {fileID: 7441776044152493977}
   m_Layer: 7
   m_Name: Ground Checker
   m_TagString: Untagged
@@ -71,21 +69,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.7
---- !u!114 &3458834645096208158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163396719300303635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09d40b90da6b42589971320ba7a7bc95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _converters:
-  - {fileID: 7441776044152493977}
-  _destroyAfterConversion: 1
 --- !u!114 &9117821104294268871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,20 +93,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d5071960684b97bcdb09d4072584ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7441776044152493977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163396719300303635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26dc6a4d82b44430938cd44c077dc550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _component:
-    groundLayer:
-      serializedVersion: 2
-      m_Bits: 8
-    isGrounded: 0

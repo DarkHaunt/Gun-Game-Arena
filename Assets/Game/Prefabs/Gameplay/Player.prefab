@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2667363530479299435}
   - component: {fileID: 7498084061524515319}
   - component: {fileID: 5338384068554920247}
+  - component: {fileID: 7874302141447416580}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -173,6 +174,7 @@ MonoBehaviour:
   - {fileID: 2667363530479299435}
   - {fileID: 7498084061524515319}
   - {fileID: 5338384068554920247}
+  - {fileID: 7874302141447416580}
   _destroyAfterConversion: 1
 --- !u!114 &2713796729437144551
 MonoBehaviour:
@@ -244,6 +246,23 @@ MonoBehaviour:
   _component:
     Body: {fileID: 8344016292419840077}
     Collider: {fileID: 3114422379556214306}
+--- !u!114 &7874302141447416580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7603185986567965700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26dc6a4d82b44430938cd44c077dc550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component:
+    groundLayer:
+      serializedVersion: 2
+      m_Bits: 8
+    isGrounded: 0
 --- !u!1001 &4962640346370175754
 PrefabInstance:
   m_ObjectHideFlags: 0

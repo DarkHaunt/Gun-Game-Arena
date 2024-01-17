@@ -2,6 +2,14 @@ namespace Game.Scripts.Gameplay.StaticData
 {
     public static class Indents
     {
-        public const string EventWorld = "events";
+        public static class World
+        {
+            public const string EventWorld = "events";
+        }
+
+        public static class Path
+        {
+            public const string PlayerViewPath = "";
+        }
     }
 }

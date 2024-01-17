@@ -16,8 +16,10 @@ namespace Game.Scripts.Gameplay.Move.Grounding
         private readonly EcsPoolInject<OnTriggerEnter2DEvent> _enterPool = default;
         
         private readonly EcsPoolInject<Grounding> _groundPool = default;
-        
 
+        private readonly EcsPackedEntityWithWorld _packedEntity;
+
+        private EcsPackedEntityWithWorld _hui;
         
         public void Run(IEcsSystems systems)
         {
@@ -26,8 +28,7 @@ namespace Game.Scripts.Gameplay.Move.Grounding
                 Debug.Log($"<color=white>Enter - {i}</color>");
                // ref var entity = ref _groundPool.Value.Get(i);
                 ref var e = ref _enterPool.Value.Get(i);
-                
-                
+
                 /*if (entity.groundLayer.ContainsLayer(e.collider2D.gameObject.layer))
                 {
                     Debug.Log($"<color=white>Enter</color>");
