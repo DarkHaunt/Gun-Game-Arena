@@ -12,13 +12,7 @@ GameObject:
   - component: {fileID: 5342509048153636610}
   - component: {fileID: 8344016292419840077}
   - component: {fileID: 3114422379556214306}
-  - component: {fileID: 7252552930905197397}
-  - component: {fileID: 2713796729437144551}
-  - component: {fileID: 1615957127295565704}
-  - component: {fileID: 2667363530479299435}
-  - component: {fileID: 7498084061524515319}
-  - component: {fileID: 5338384068554920247}
-  - component: {fileID: 7874302141447416580}
+  - component: {fileID: 3322201778261530260}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -156,7 +150,7 @@ CapsuleCollider2D:
   m_Offset: {x: -2.5886555, y: 0}
   m_Size: {x: 13.733405, y: 21.98912}
   m_Direction: 0
---- !u!114 &7252552930905197397
+--- !u!114 &3322201778261530260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,104 +159,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7603185986567965700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09d40b90da6b42589971320ba7a7bc95, type: 3}
+  m_Script: {fileID: 11500000, guid: 6360be3ffedd4daaa9242d799c6d500c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _converters:
-  - {fileID: 2713796729437144551}
-  - {fileID: 1615957127295565704}
-  - {fileID: 2667363530479299435}
-  - {fileID: 7498084061524515319}
-  - {fileID: 5338384068554920247}
-  - {fileID: 7874302141447416580}
-  _destroyAfterConversion: 1
---- !u!114 &2713796729437144551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7603185986567965700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e9e4006463747a894d02c29f2e3e70b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _component:
-    Speed: 50
---- !u!114 &1615957127295565704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7603185986567965700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdd025cdccd54c2192d37ef77134a918, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _component:
-    XDirection: 0
---- !u!114 &2667363530479299435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7603185986567965700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3060fb7491e46e2a5ac7740d89c5793, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7498084061524515319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7603185986567965700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddfa104442a64dc4b6f02f8b91388989, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _component:
-    Body: {fileID: 8344016292419840077}
-    Force: 3000
---- !u!114 &5338384068554920247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7603185986567965700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d562af4f564341bc9d25877d2d8b9453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _component:
-    Body: {fileID: 8344016292419840077}
-    Collider: {fileID: 3114422379556214306}
---- !u!114 &7874302141447416580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7603185986567965700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26dc6a4d82b44430938cd44c077dc550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _component:
-    groundLayer:
-      serializedVersion: 2
-      m_Bits: 8
-    isGrounded: 0
+  <Rigidbody>k__BackingField: {fileID: 8344016292419840077}
+  <Collider>k__BackingField: {fileID: 3114422379556214306}
+  <Renderer>k__BackingField: {fileID: 5342509048153636610}
 --- !u!1001 &4962640346370175754
 PrefabInstance:
   m_ObjectHideFlags: 0

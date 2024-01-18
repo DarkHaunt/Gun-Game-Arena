@@ -6,6 +6,7 @@ using Leopotam.EcsLite.ExtendedSystems;
 using Game.Scripts.Gameplay.Input.Move;
 using Game.Scripts.Gameplay.Move.Jump;
 using Game.Scripts.Gameplay.Move.Walk;
+using Game.Scripts.Gameplay.Spawn;
 using Game.Scripts.Input;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
@@ -25,6 +26,7 @@ namespace Game.Scripts.Gameplay.Boot
 
             _fixedUpdateSystems = new EcsSystems(physicWorld);
             _fixedUpdateSystems
+                .Add(new PlayerSpawnSystem())
                 .Add(new InputEventsSendSystem())
                 .Add(new InputMoveHandleSystem())
                 .Add(new GroundSystem())

@@ -19,7 +19,6 @@ namespace Game.Scripts.Gameplay.Move.Grounding
 
         private readonly EcsPackedEntityWithWorld _packedEntity;
 
-        private EcsPackedEntityWithWorld _hui;
         
         public void Run(IEcsSystems systems)
         {
