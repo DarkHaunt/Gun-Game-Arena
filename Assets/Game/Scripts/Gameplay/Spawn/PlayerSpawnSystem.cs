@@ -24,6 +24,7 @@ namespace Game.Scripts.Gameplay.Spawn
             
             var world = _world.Value;
             var player = world.NewEntity();
+            var packedPlayer = world.PackEntity(player);
 
             world.GetPool<InputEventsListener>().Add(player);
             world.GetPool<PlayerTag>().Add(player);
@@ -38,9 +39,12 @@ namespace Game.Scripts.Gameplay.Spawn
             ref var physic = ref world.GetPool<Physical2D>().Add(player);
             physic.Collider = view.Collider;
             physic.Body = view.Rigidbody;
-            
-            ref var grounding = ref world.GetPool<Grounding>().Add(player);
+
+            var groundPool = world.GetPool<Ground>();
+            ref var grounding = ref groundPool.Add(player);
             grounding.groundLayer = config.GroundLayer;
+            
+            view.GroundChecker.Init(packedPlayer, groundPool);
         }
     }
 }

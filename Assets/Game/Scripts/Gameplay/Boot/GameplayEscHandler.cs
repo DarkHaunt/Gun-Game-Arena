@@ -1,7 +1,6 @@
 using Game.Scripts.Gameplay.Input.Event_Handling.Events;
 using Game.Scripts.Gameplay.Input.Event_Handling;
 using AB_Utility.FromSceneToEntityConverter;
-using Game.Scripts.Gameplay.Move.Grounding;
 using Leopotam.EcsLite.ExtendedSystems;
 using Game.Scripts.Gameplay.Input.Move;
 using Game.Scripts.Gameplay.Move.Jump;
@@ -29,7 +28,6 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(new PlayerSpawnSystem())
                 .Add(new InputEventsSendSystem())
                 .Add(new InputMoveHandleSystem())
-                .Add(new GroundSystem())
                 .Add(new WalkSystem())
                 .Add(new JumpSystem());
             
