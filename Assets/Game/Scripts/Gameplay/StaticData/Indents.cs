@@ -10,7 +10,7 @@ namespace Game.Scripts.Gameplay.StaticData
         public static class Path
         {
             public const string PlayerViewPath = "Player";
-            public const string PlayerConfigPath = "PlayerConfig";
+            public const string PlayerConfigPath = "Gameplay/PlayerConfig";
         }
     }
 }
