@@ -1,29 +1,32 @@
-using Game.Scripts.Infrastructure.RootStateMachine.States;
-using Game.Scripts.Infrastructure.RootStateMachine;
+using Game.Scripts.Menu.StateMachine.States;
 using Game.Scripts.Common.StateMachine;
 using System.Collections.Generic;
-using Zenject;
 using System;
 
 namespace Game.Scripts.Menu.StateMachine
 {
-    public class MenuStateMachine : IInitializable
+    public class MenuStateMachine
     {
         private readonly Dictionary<Type, IState> _states;
         private IState _state;
 
-        private readonly GameStateMachine _gameStateMachine;
-        
-        
-        public MenuStateMachine(GameStateMachine gameStateMachine)
+        public MenuStateMachine(CreateRoom.Factory createRoomFactory, JoinRoom.Factory joinRoomFactory, 
+            MainMenu.Factory mainMenuFactory, ExitGame.Factory exitGameFactory)
         {
-            _gameStateMachine = gameStateMachine;
+            _states = new Dictionary<Type, IState>(4)
+            {
+                [typeof(MainMenu)] = mainMenuFactory.Create(),
+                [typeof(CreateRoom)] = createRoomFactory.Create(),
+                [typeof(JoinRoom)] = joinRoomFactory.Create(),
+                [typeof(ExitGame)] = exitGameFactory.Create()
+            };
         }
         
-        
-        public async void Initialize()
+        public void Enter<TState>() where TState : class, IState
         {
-            await _gameStateMachine.Enter<MenuState>();
+            _state?.Exit();
+            _state = _states[typeof(TState)] as TState;
+            _state!.Enter();
         }
     }
 }

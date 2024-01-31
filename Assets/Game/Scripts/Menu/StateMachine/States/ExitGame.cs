@@ -1,4 +1,5 @@
 using Game.Scripts.Common.StateMachine;
+using Zenject;
 
 namespace Game.Scripts.Menu.StateMachine.States
 {
@@ -6,12 +7,15 @@ namespace Game.Scripts.Menu.StateMachine.States
     {
         public void Enter()
         {
-            throw new System.NotImplementedException();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
 
-        public void Exit()
-        {
-            throw new System.NotImplementedException();
-        }
+        public void Exit() { }
+        
+        public class Factory : PlaceholderFactory<ExitGame> {}
     }
 }

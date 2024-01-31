@@ -10,6 +10,10 @@ namespace Game.Scripts.Menu.Boot
             Container
                 .BindInterfacesTo<MenuStateMachine>()
                 .AsSingle();
+            
+            Container
+                .BindInterfacesTo<MenuController>()
+                .AsSingle();
         }
     }
 }

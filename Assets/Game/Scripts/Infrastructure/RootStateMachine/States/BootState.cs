@@ -1,6 +1,5 @@
-using Game.Scripts.Infrastructure.Boot;
-using Cysharp.Threading.Tasks;
 using Game.Scripts.Infrastructure.Connection;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 

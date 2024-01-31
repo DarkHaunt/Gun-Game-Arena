@@ -1,17 +1,19 @@
 using Game.Scripts.Common.StateMachine;
+using Zenject;
 
 namespace Game.Scripts.Menu.StateMachine.States
 {
-    public class StartGame : IState
+    public class MainMenu : IState
     {
         public void Enter()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public void Exit()
         {
-            throw new System.NotImplementedException();
         }
+        
+        public class Factory : PlaceholderFactory<MainMenu> {}
     }
 }
