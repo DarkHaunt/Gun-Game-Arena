@@ -42,6 +42,6 @@ namespace Game.Scripts.Menu.StateMachine.States
         private void SetExitGameState()
             => _stateMachine.Enter<ExitGame>();
         
-        public class Factory : PlaceholderFactory<MainMenu> {}
+        public class Factory : PlaceholderFactory<MenuStateMachine, MainMenu> {}
     }
 }

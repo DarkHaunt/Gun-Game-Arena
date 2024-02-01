@@ -20,9 +20,9 @@ namespace Game.Scripts.Menu.StateMachine
             _gameStateMachine = gameStateMachine;
             _states = new Dictionary<Type, IState>(4)
             {
-                [typeof(MainMenu)] = mainMenuFactory.Create(),
-                [typeof(CreateRoom)] = createRoomFactory.Create(),
-                [typeof(JoinRoom)] = joinRoomFactory.Create(),
+                [typeof(MainMenu)] = mainMenuFactory.Create(this),
+                [typeof(CreateRoom)] = createRoomFactory.Create(this),
+                [typeof(JoinRoom)] = joinRoomFactory.Create(this),
                 [typeof(ExitGame)] = exitGameFactory.Create()
             };
         }

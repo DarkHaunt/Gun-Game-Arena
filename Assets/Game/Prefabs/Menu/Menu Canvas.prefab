@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 1757523178512237640}
   - component: {fileID: 7064321281146852873}
   - component: {fileID: 6505982275796264429}
+  - component: {fileID: 2400194958491177096}
   m_Layer: 5
   m_Name: Menu Canvas
   m_TagString: Untagged
@@ -588,6 +589,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8304d922690746642810ca265e0004b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2400194958491177096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4176660161666663751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbc8d38f74947bab5835c248287df00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvas: {fileID: 540667899624668125}
+  <CreateButton>k__BackingField: {fileID: 7998819405813895928}
+  <JoinButton>k__BackingField: {fileID: 2846898165997477524}
+  <ExitButton>k__BackingField: {fileID: 2545196617187909390}
 --- !u!1 &6428036515926585383
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ namespace Game.Scripts.Menu.UI
 {
     public class MenuView : MonoBehaviour
     {
-        [SerializeField] private Canvas _menuCanvas;
+        [SerializeField] private Canvas _canvas;
         
         [field: SerializeField] public Button CreateButton { get; private set; }
         [field: SerializeField] public Button JoinButton { get; private set; }
@@ -13,6 +13,6 @@ namespace Game.Scripts.Menu.UI
 
 
         public void Enable(bool enable)
-            => _menuCanvas.enabled = enable;
+            => _canvas.enabled = enable;
     }
 }

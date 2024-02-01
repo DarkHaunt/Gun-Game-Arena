@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 410273819397948222}
   - component: {fileID: 4443305900097482444}
   - component: {fileID: 2495936586962500611}
+  - component: {fileID: 1933448878731991808}
   m_Layer: 5
   m_Name: Create Room Canvas
   m_TagString: Untagged
@@ -597,7 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
@@ -614,6 +615,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8304d922690746642810ca265e0004b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1933448878731991808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5236018154539283240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439c6248352e4211983342398cb4900c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvas: {fileID: 3151658073333661757}
+  <CreateButton>k__BackingField: {fileID: 6940207704540573164}
+  <CancelButton>k__BackingField: {fileID: 8284817802861684387}
+  <DecreaseButton>k__BackingField: {fileID: 3253712897793700647}
+  <IncreaseButton>k__BackingField: {fileID: 643354283284944416}
+  _playerCountText: {fileID: 4223513118563251140}
 --- !u!1 &7558191248864721847
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +645,7 @@ GameObject:
   - component: {fileID: 7837599519576551568}
   - component: {fileID: 4223513118563251140}
   m_Layer: 5
-  m_Name: Player Numers Field
+  m_Name: Player Count Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
