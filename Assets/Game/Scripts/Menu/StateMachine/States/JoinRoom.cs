@@ -1,5 +1,6 @@
 using Game.Scripts.Common.StateMachine;
 using Game.Scripts.Menu.UI;
+using Photon.Pun;
 using UnityEngine;
 using Zenject;
 
@@ -32,7 +33,11 @@ namespace Game.Scripts.Menu.StateMachine.States
 
         private void JoinToRoom()
         {
+            PhotonNetwork.JoinRoom(_view.GetRoomName());
+            
             Debug.Log($"<color=white>{_view.GetRoomName()}</color>");
+            
+            _stateMachine.Enter<LoadLobby>();
         }
 
         private void SetMainMenuState()

@@ -674,6 +674,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[UI_Camera]'
       objectReference: {fileID: 0}
+    - target: {fileID: 2103955064481873598, guid: a95a3e1e558f7c1489e0d8e6190339dc, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103955064481873598, guid: a95a3e1e558f7c1489e0d8e6190339dc, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103955064481873598, guid: a95a3e1e558f7c1489e0d8e6190339dc, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103955064481873598, guid: a95a3e1e558f7c1489e0d8e6190339dc, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5576416898411100959, guid: a95a3e1e558f7c1489e0d8e6190339dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

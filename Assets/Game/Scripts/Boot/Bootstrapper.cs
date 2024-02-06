@@ -23,7 +23,7 @@ namespace Game.Scripts.Boot
         {
             await _gameStateMachine.Enter<BootState>();
             
-            _sceneLoader.LoadScene(Scene.Menu);
+            await _sceneLoader.LoadScene(Scene.Menu);
         }
     }
 }

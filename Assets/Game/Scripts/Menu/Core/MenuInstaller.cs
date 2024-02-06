@@ -27,11 +27,13 @@ namespace Game.Scripts.Menu.Boot
             Container.Bind<MainMenu>().AsSingle();
             Container.Bind<CreateRoom>().AsSingle();
             Container.Bind<JoinRoom>().AsSingle();
+            Container.Bind<LoadLobby>().AsSingle();
             Container.Bind<ExitGame>().AsSingle();
 
             Container.BindFactory<MenuStateMachine, MainMenu, MainMenu.Factory>().WhenInjectedInto<MenuStateMachine>();
             Container.BindFactory<MenuStateMachine, CreateRoom, CreateRoom.Factory>().WhenInjectedInto<MenuStateMachine>();
             Container.BindFactory<MenuStateMachine, JoinRoom, JoinRoom.Factory>().WhenInjectedInto<MenuStateMachine>();
+            Container.BindFactory<LoadLobby, LoadLobby.Factory>().WhenInjectedInto<MenuStateMachine>();
             Container.BindFactory<ExitGame, ExitGame.Factory>().WhenInjectedInto<MenuStateMachine>();
         }
 

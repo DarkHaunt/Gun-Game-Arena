@@ -14,7 +14,7 @@ namespace Game.Scripts.Infrastructure.Scenes
         private const float ForceLoadingScreenTime = 1f;
         
         [SerializeField] private Image _fade;
-        [SerializeField] private GameObject _loadingScreen;
+        [SerializeField] private Canvas _canvas;
 
         
         public async UniTask PerformTransition()
@@ -31,10 +31,10 @@ namespace Game.Scripts.Infrastructure.Scenes
             await _fade.DOFade(0f, UnfadeTime).AsyncWaitForCompletion();
         }
 
-        public async UniTask PerformForceLoadScreen()
+        public static async UniTask PerformForceLoadScreen()
             => await UniTask.Delay(TimeSpan.FromSeconds(ForceLoadingScreenTime));
 
         private void ActivateLoadingScreen(bool enable)
-            => _loadingScreen.SetActive(enable);
+            => _canvas.enabled = enable;
     }
 }

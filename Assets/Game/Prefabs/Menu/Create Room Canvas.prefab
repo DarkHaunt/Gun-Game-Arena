@@ -632,7 +632,7 @@ MonoBehaviour:
   <CancelButton>k__BackingField: {fileID: 8284817802861684387}
   <DecreaseButton>k__BackingField: {fileID: 3253712897793700647}
   <IncreaseButton>k__BackingField: {fileID: 643354283284944416}
-  _playerCountText: {fileID: 4223513118563251140}
+  _playerCountField: {fileID: 4223513118563251140}
 --- !u!1 &7558191248864721847
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,13 +12,13 @@ namespace Game.Scripts.Infrastructure.Scenes
             _transitionHandler = transitionHandler;
         }
         
-        public async void LoadScene(Scene scene)
+        public async UniTask LoadScene(Scene scene)
         {
             var name = scene.ToString();
 
             await _transitionHandler.PerformTransition();
 
-            var loadingScreenDelay = _transitionHandler.PerformForceLoadScreen();
+            var loadingScreenDelay = SceneTransitionHandler.PerformForceLoadScreen();
             var sceneLoading = LoadSceneAsync(name);
             
             await UniTask.WhenAll(loadingScreenDelay, sceneLoading);

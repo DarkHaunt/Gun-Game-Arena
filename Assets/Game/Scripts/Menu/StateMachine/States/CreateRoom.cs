@@ -1,5 +1,7 @@
 using Game.Scripts.Common.StateMachine;
 using Game.Scripts.Menu.UI;
+using Photon.Realtime;
+using Photon.Pun;
 using Zenject;
 using static Game.Scripts.Infrastructure.StaticData.InfrastructureKeys;
 
@@ -26,6 +28,8 @@ namespace Game.Scripts.Menu.StateMachine.States
         {
             _view.Enable(true);
             _view.UpdatePlayerCount(_currentPlayersCount);
+            
+            _view.CreateButton.onClick.AddListener(CreateAndJoinRoom);
             _view.CancelButton.onClick.AddListener(SetMainMenuState);
             
             _view.IncreaseButton.onClick.AddListener(IncreaseRoomPlayerCount);
@@ -35,6 +39,8 @@ namespace Game.Scripts.Menu.StateMachine.States
         public void Exit()
         {
             _view.Enable(false);
+            
+            _view.CreateButton.onClick.RemoveListener(CreateAndJoinRoom);
             _view.CancelButton.onClick.RemoveListener(SetMainMenuState);
             
             _view.IncreaseButton.onClick.AddListener(IncreaseRoomPlayerCount);
@@ -57,6 +63,18 @@ namespace Game.Scripts.Menu.StateMachine.States
 
             _currentPlayersCount--;
             _view.UpdatePlayerCount(_currentPlayersCount);
+        }
+
+        private void CreateAndJoinRoom()
+        {
+            var roomOption = new RoomOptions
+            {
+                MaxPlayers = _currentPlayersCount
+            };
+
+            PhotonNetwork.CreateRoom("", roomOption);
+            
+            _stateMachine.Enter<LoadLobby>();
         }
         
         private void SetMainMenuState()
