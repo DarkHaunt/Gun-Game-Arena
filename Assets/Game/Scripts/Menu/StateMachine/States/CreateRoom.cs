@@ -71,8 +71,8 @@ namespace Game.Scripts.Menu.StateMachine.States
             {
                 MaxPlayers = _currentPlayersCount
             };
-
-            PhotonNetwork.CreateRoom("", roomOption);
+            
+            PhotonNetwork.CreateRoom(_view.GetRoomName(), roomOption);
             
             _stateMachine.Enter<LoadLobby>();
         }

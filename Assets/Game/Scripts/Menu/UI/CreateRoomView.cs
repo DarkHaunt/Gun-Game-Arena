@@ -11,6 +11,7 @@ namespace Game.Scripts.Menu.UI
         [field: Space]
         [field: SerializeField] public Button CreateButton { get; private set; }
         [field: SerializeField] public Button CancelButton { get; private set; }
+        [SerializeField] private TMP_InputField _roomNameField;
         
         
         [field: Header("--- Count Set Up ---")]
@@ -24,5 +25,8 @@ namespace Game.Scripts.Menu.UI
 
         public void UpdatePlayerCount(int count)
             => _playerCountField.text = count.ToString();
+        
+        public string GetRoomName()
+            => _roomNameField.text;
     }
 }
