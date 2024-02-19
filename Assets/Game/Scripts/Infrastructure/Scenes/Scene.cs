@@ -4,7 +4,6 @@ namespace Game.Scripts.Infrastructure.Scenes
     {
         Boot,
         Menu,
-        Lobby,
         Game
     }
 }

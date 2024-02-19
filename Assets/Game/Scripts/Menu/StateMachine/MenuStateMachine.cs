@@ -3,8 +3,8 @@ using Game.Scripts.Infrastructure.RootStateMachine;
 using Game.Scripts.Menu.StateMachine.States;
 using Game.Scripts.Common.StateMachine;
 using System.Collections.Generic;
-using System;
 using Zenject;
+using System;
 
 namespace Game.Scripts.Menu.StateMachine
 {
@@ -14,16 +14,15 @@ namespace Game.Scripts.Menu.StateMachine
         private readonly Dictionary<Type, IState> _states;
         private IState _state;
 
-        public MenuStateMachine(GameStateMachine gameStateMachine, CreateRoom.Factory createRoomFactory, JoinRoom.Factory joinRoomFactory, 
-            MainMenu.Factory mainMenuFactory, LoadLobby.Factory loadBootFactory, ExitGame.Factory exitGameFactory)
+        public MenuStateMachine(GameStateMachine gameStateMachine, StartGame.Factory joinRoomFactory, 
+            MainMenu.Factory mainMenuFactory, LoadGame.Factory loadBootFactory, ExitGame.Factory exitGameFactory)
         {
             _gameStateMachine = gameStateMachine;
             _states = new Dictionary<Type, IState>(4)
             {
                 [typeof(MainMenu)] = mainMenuFactory.Create(this),
-                [typeof(CreateRoom)] = createRoomFactory.Create(this),
-                [typeof(JoinRoom)] = joinRoomFactory.Create(this),
-                [typeof(LoadLobby)] = loadBootFactory.Create(),
+                [typeof(StartGame)] = joinRoomFactory.Create(this),
+                [typeof(LoadGame)] = loadBootFactory.Create(),
                 [typeof(ExitGame)] = exitGameFactory.Create()
             };
         }

@@ -4,14 +4,13 @@ using Game.Scripts.Menu.UI;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Scripts.Menu.Boot
+namespace Game.Scripts.Menu.Core
 {
     public class MenuInstaller : MonoInstaller
     {
         [Header("--- Views ---")]
         [SerializeField] private MenuView _menuView;
-        [SerializeField] private JoinRoomView _joinRoomView;
-        [SerializeField] private CreateRoomView _createRoomView;
+        [SerializeField] private StartGameView _startGameView;
         
         
         public override void InstallBindings()
@@ -25,23 +24,20 @@ namespace Game.Scripts.Menu.Boot
             Container.BindInterfacesAndSelfTo<MenuStateMachine>().AsSingle();
 
             Container.Bind<MainMenu>().AsSingle();
-            Container.Bind<CreateRoom>().AsSingle();
-            Container.Bind<JoinRoom>().AsSingle();
-            Container.Bind<LoadLobby>().AsSingle();
+            Container.Bind<StartGame>().AsSingle();
+            Container.Bind<LoadGame>().AsSingle();
             Container.Bind<ExitGame>().AsSingle();
 
             Container.BindFactory<MenuStateMachine, MainMenu, MainMenu.Factory>().WhenInjectedInto<MenuStateMachine>();
-            Container.BindFactory<MenuStateMachine, CreateRoom, CreateRoom.Factory>().WhenInjectedInto<MenuStateMachine>();
-            Container.BindFactory<MenuStateMachine, JoinRoom, JoinRoom.Factory>().WhenInjectedInto<MenuStateMachine>();
-            Container.BindFactory<LoadLobby, LoadLobby.Factory>().WhenInjectedInto<MenuStateMachine>();
+            Container.BindFactory<MenuStateMachine, StartGame, StartGame.Factory>().WhenInjectedInto<MenuStateMachine>();
+            Container.BindFactory<LoadGame, LoadGame.Factory>().WhenInjectedInto<MenuStateMachine>();
             Container.BindFactory<ExitGame, ExitGame.Factory>().WhenInjectedInto<MenuStateMachine>();
         }
 
         private void RegisterViews()
         {
             Container.BindInstance(_menuView);
-            Container.BindInstance(_joinRoomView);
-            Container.BindInstance(_createRoomView);
+            Container.BindInstance(_startGameView);
         }
     }
 }

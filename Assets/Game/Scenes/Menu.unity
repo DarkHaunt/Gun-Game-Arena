@@ -168,8 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menuView: {fileID: 4011260904224315108}
-  _joinRoomView: {fileID: 876862576}
-  _createRoomView: {fileID: 824423751963550992}
+  _startGameView: {fileID: 876862576}
 --- !u!20 &276049090 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2103955064481873598, guid: a95a3e1e558f7c1489e0d8e6190339dc, type: 3}
@@ -419,7 +418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4657476135812214518, guid: 02b38049c5eb1f744b46059f34a091a3, type: 3}
       propertyPath: m_Name
-      value: Join Room Canvas
+      value: Start Game Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 5376494950194685840, guid: 02b38049c5eb1f744b46059f34a091a3, type: 3}
       propertyPath: m_Camera
@@ -434,122 +433,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02b38049c5eb1f744b46059f34a091a3, type: 3}
---- !u!1001 &824423751963550991
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637966421492822221, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3151658073333661757, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 276049090}
-    - target: {fileID: 3151658073333661757, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236018154539283240, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-      propertyPath: m_Name
-      value: Create Room Canvas
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
---- !u!114 &824423751963550992 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1933448878731991808, guid: 5a4663ec3fdcae440ac9799f428ef6c5, type: 3}
-  m_PrefabInstance: {fileID: 824423751963550991}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 439c6248352e4211983342398cb4900c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4011260904224315107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -743,5 +626,4 @@ SceneRoots:
   - {fileID: 4288959863744878563}
   - {fileID: 4011260904224315107}
   - {fileID: 779903743899837840}
-  - {fileID: 824423751963550991}
   - {fileID: 1982174493}
