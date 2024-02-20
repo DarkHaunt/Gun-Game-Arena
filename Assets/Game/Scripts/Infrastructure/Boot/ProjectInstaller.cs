@@ -28,7 +28,7 @@ namespace Game.Scripts.Infrastructure.Boot
 
         private void RegisterInputSystem()
         {
-            Container.Bind<InputActions>().AsTransient();
+            Container.Bind<InputActions>().AsSingle();
         }
 
         private void RegisterRootStateMachine()
@@ -37,12 +37,10 @@ namespace Game.Scripts.Infrastructure.Boot
 
             Container.BindInterfacesAndSelfTo<BootState>().AsSingle();
             Container.BindInterfacesAndSelfTo<MenuState>().AsSingle();
-            Container.BindInterfacesAndSelfTo<LobbyState>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameplayState>().AsSingle();
 
             Container.BindFactory<BootState, BootState.Factory>().WhenInjectedInto<GameStateMachine>();
             Container.BindFactory<MenuState, MenuState.Factory>().WhenInjectedInto<GameStateMachine>();
-            Container.BindFactory<LobbyState, LobbyState.Factory>().WhenInjectedInto<GameStateMachine>();
             Container.BindFactory<GameplayState, GameplayState.Factory>().WhenInjectedInto<GameStateMachine>();
         }
 

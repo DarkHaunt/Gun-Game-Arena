@@ -11,14 +11,12 @@ namespace Game.Scripts.Infrastructure.RootStateMachine
         private IAsyncState _activeState;
 
         
-        public GameStateMachine(BootState.Factory bootFactory, MenuState.Factory menuFactory, 
-            LobbyState.Factory lobbyFactory, GameplayState.Factory gameFactory)
+        public GameStateMachine(BootState.Factory bootFactory, MenuState.Factory menuFactory, GameplayState.Factory gameFactory)
         {
             _states = new Dictionary<Type, IAsyncState>(4)
             {
                 [typeof(BootState)] = bootFactory.Create(),
                 [typeof(MenuState)] = menuFactory.Create(),
-                [typeof(LobbyState)] = lobbyFactory.Create(),
                 [typeof(GameplayState)] = gameFactory.Create()
             };
         }

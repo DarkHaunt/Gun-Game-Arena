@@ -1,26 +1,42 @@
+using Game.Scripts.Infrastructure.RootStateMachine.States;
+using Game.Scripts.Infrastructure.RootStateMachine;
 using AB_Utility.FromSceneToEntityConverter;
+using Game.Scripts.Gameplay.Input.Events;
 using Game.Scripts.Gameplay.Environment;
 using Leopotam.EcsLite.ExtendedSystems;
 using Game.Scripts.Gameplay.Cameras;
-using Game.Scripts.Gameplay.Input;
-using Game.Scripts.Gameplay.Input.Events;
 using Game.Scripts.Gameplay.Moving;
-using Game.Scripts.Input;
+using Game.Scripts.Gameplay.Input;
 using Leopotam.EcsLite.Di;
+using Game.Scripts.Input;
 using Leopotam.EcsLite;
 using LeoEcsPhysics;
 using UnityEngine;
+using Zenject;
+using System;
 
 namespace Game.Scripts.Gameplay.Boot
 {
-    public class GameplayEscBootstrapper : MonoBehaviour
+    public class GameplayBootstrapper : IInitializable, IFixedTickable, IDisposable
     {
-        [SerializeField] private Camera _camera;
+        private readonly GameStateMachine _gameStateMachine;
+        private readonly InputActions _inputActions;
+        private readonly Camera _camera;
         
         private EcsSystems _fixedUpdateSystems;
 
-        private void Start()
+        public GameplayBootstrapper(GameStateMachine gameStateMachine, InputActions inputActions, Camera camera)
         {
+            _gameStateMachine = gameStateMachine;
+            _inputActions = inputActions;
+            _camera = camera;
+        }
+
+
+        public async void Initialize()
+        {
+            await _gameStateMachine.Enter<GameplayState>();
+ 
             var physicWorld = new EcsWorld();
 
             _fixedUpdateSystems = new EcsSystems(physicWorld);
@@ -33,7 +49,11 @@ namespace Game.Scripts.Gameplay.Boot
             EcsPhysicsEvents.ecsWorld = physicWorld;
 
             SetUpCleanupEvents();
-            Initialize();
+            
+            _fixedUpdateSystems
+                .ConvertScene()
+                .Inject(_inputActions, _camera)
+                .Init();
         }
 
         private void SetUpCleanupEvents()
@@ -42,19 +62,11 @@ namespace Game.Scripts.Gameplay.Boot
                 .DelHere<AttackEvent>()
                 .DelHerePhysics();
         }
-        
-        private void Initialize()
-        {
-            _fixedUpdateSystems
-                .ConvertScene()
-                .Inject(new InputActions(), _camera)
-                .Init();
-        }
 
-        private void FixedUpdate()
+        public void FixedTick()
             => _fixedUpdateSystems?.Run();
 
-        private void OnDestroy()
+        public void Dispose()
         {
             EcsPhysicsEvents.ecsWorld = null;
             

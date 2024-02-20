@@ -8,7 +8,7 @@ namespace Game.Scripts.Infrastructure.RootStateMachine.States
     {
         public async UniTask Enter()
         {
-            Debug.Log($"<color=red>--- Game ---</color>");
+            Debug.Log($"<color=red>--- GAME ---</color>");
             
             await UniTask.Yield();
         }
