@@ -1,11 +1,10 @@
-using Game.Scripts.Gameplay.Input.Event_Handling.Events;
-using Game.Scripts.Gameplay.Input.Event_Handling;
 using AB_Utility.FromSceneToEntityConverter;
-using Game.Scripts.Gameplay.Cameras;
 using Game.Scripts.Gameplay.Environment;
 using Leopotam.EcsLite.ExtendedSystems;
-using Game.Scripts.Gameplay.Input.Move;
-using Game.Scripts.Gameplay.Move.Walk;
+using Game.Scripts.Gameplay.Cameras;
+using Game.Scripts.Gameplay.Input;
+using Game.Scripts.Gameplay.Input.Events;
+using Game.Scripts.Gameplay.Moving;
 using Game.Scripts.Input;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
@@ -14,12 +13,11 @@ using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Boot
 {
-    public class GameplayEscHandler : MonoBehaviour
+    public class GameplayEscBootstrapper : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
         
         private EcsSystems _fixedUpdateSystems;
-
 
         private void Start()
         {
@@ -28,9 +26,8 @@ namespace Game.Scripts.Gameplay.Boot
             _fixedUpdateSystems = new EcsSystems(physicWorld);
             _fixedUpdateSystems
                 .Add(new EnvironmentSetupSystem())
-                .Add(new InputEventsSendSystem())
-                .Add(new InputMoveHandleSystem())
-                .Add(new WalkSystem())
+                .Add(new InputHandleSystem())
+                .Add(new MoveSystem())
                 .Add(new FollowSystem());
             
             EcsPhysicsEvents.ecsWorld = physicWorld;

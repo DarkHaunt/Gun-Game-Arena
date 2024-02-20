@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Game.Scripts.Gameplay.Physic
+namespace Game.Scripts.Gameplay.Physics
 {
     [Serializable]
     public struct Physical2D

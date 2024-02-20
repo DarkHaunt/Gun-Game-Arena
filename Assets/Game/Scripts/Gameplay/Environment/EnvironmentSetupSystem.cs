@@ -1,12 +1,11 @@
-using Game.Scripts.Gameplay.Cameras;
-using Game.Scripts.Gameplay.Input.Event_Handling;
-using Game.Scripts.Gameplay.Input.Move;
-using Game.Scripts.Gameplay.Move.Walk;
-using Game.Scripts.Gameplay.Physic;
-using Game.Scripts.Gameplay.Player;
 using Game.Scripts.Gameplay.StaticData;
-using Leopotam.EcsLite;
+using Game.Scripts.Gameplay.Cameras;
+using Game.Scripts.Gameplay.Input;
+using Game.Scripts.Gameplay.Moving;
+using Game.Scripts.Gameplay.Physics;
+using Game.Scripts.Gameplay.Player;
 using Leopotam.EcsLite.Di;
+using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Environment
@@ -44,11 +43,10 @@ namespace Game.Scripts.Gameplay.Environment
             var world = _world.Value;
             var player = world.NewEntity();
 
-            world.GetPool<InputEventsListener>().Add(player);
+            world.GetPool<InputListener>().Add(player);
             world.GetPool<PlayerTag>().Add(player);
-            world.GetPool<InputMove>().Add(player);
 
-            ref var walk = ref world.GetPool<Walk>().Add(player);
+            ref var walk = ref world.GetPool<Move>().Add(player);
             walk.Speed = config.MoveForce;
 
             ref var physic = ref world.GetPool<Physical2D>().Add(player);
