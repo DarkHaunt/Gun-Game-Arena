@@ -11,6 +11,7 @@ namespace Game.Scripts.Gameplay.StaticData
         {
             public const string PlayerViewPath = "Player";
             public const string PlayerConfigPath = "Gameplay/PlayerConfig";
+            public const string EnvironmentConfigPath = "Gameplay/EnvironmentConfig";
         }
     }
 }
