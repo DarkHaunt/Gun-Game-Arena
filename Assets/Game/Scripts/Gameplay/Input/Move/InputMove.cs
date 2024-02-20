@@ -6,6 +6,6 @@ namespace Game.Scripts.Gameplay.Input.Move
     [Serializable]
     public struct InputMove
     {
-        [HideInInspector] public float XDirection;
+        [HideInInspector] public Vector2 Direction;
     }
 }

@@ -3,7 +3,6 @@ using Game.Scripts.Gameplay.Input.Event_Handling;
 using AB_Utility.FromSceneToEntityConverter;
 using Leopotam.EcsLite.ExtendedSystems;
 using Game.Scripts.Gameplay.Input.Move;
-using Game.Scripts.Gameplay.Move.Jump;
 using Game.Scripts.Gameplay.Move.Walk;
 using Game.Scripts.Gameplay.Spawn;
 using Game.Scripts.Input;
@@ -28,8 +27,7 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(new PlayerSpawnSystem())
                 .Add(new InputEventsSendSystem())
                 .Add(new InputMoveHandleSystem())
-                .Add(new WalkSystem())
-                .Add(new JumpSystem());
+                .Add(new WalkSystem());
             
             EcsPhysicsEvents.ecsWorld = physicWorld;
 
@@ -41,8 +39,6 @@ namespace Game.Scripts.Gameplay.Boot
         {
             _fixedUpdateSystems
                 .DelHere<AttackEvent>()
-                .DelHere<JumpEvent>()
-                .DelHere<DownEvent>()
                 .DelHerePhysics();
         }
         

@@ -2,7 +2,6 @@ using Game.Scripts.Gameplay.Input.Move;
 using Game.Scripts.Gameplay.Physic;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
-using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Move.Walk
 {
@@ -14,8 +13,6 @@ namespace Game.Scripts.Gameplay.Move.Walk
         private readonly EcsPoolInject<InputMove> _inputPool = default;
         private readonly EcsPoolInject<Walk> _walkPool = default;
 
-        private Vector2 _cachedForce;
-
         
         public void Run(IEcsSystems systems)
         {
@@ -25,11 +22,8 @@ namespace Game.Scripts.Gameplay.Move.Walk
                 ref var input = ref _inputPool.Value.Get(entity);
                 ref var walk = ref _walkPool.Value.Get(entity);
                 
-                _cachedForce.Set(input.XDirection * walk.Speed, 0f);
-
-                physic.Body.AddForce(_cachedForce);
+                physic.Body.AddForce(input.Direction * walk.Speed);
             }
         }
-        
     }
 }

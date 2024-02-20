@@ -1,7 +1,8 @@
+using UnityEngine.InputSystem;
+using Leopotam.EcsLite.Di;
 using Game.Scripts.Input;
 using Leopotam.EcsLite;
-using Leopotam.EcsLite.Di;
-using UnityEngine.InputSystem;
+using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Input.Move
 {
@@ -28,17 +29,17 @@ namespace Game.Scripts.Gameplay.Input.Move
         }
 
         private void CancelMoveInput(InputAction.CallbackContext _)
-            => SetInputDirection(0f);
+            => SetInputDirection(Vector2.zero);
 
         private void UpdateMoveInput(InputAction.CallbackContext walkContext)
-            => SetInputDirection(walkContext.ReadValue<float>());
+            => SetInputDirection(walkContext.ReadValue<Vector2>());
 
-        private void SetInputDirection(float direction)
+        private void SetInputDirection(Vector2 direction)
         {
             foreach (var i in _filter.Value)
             {
                 ref var input = ref _pool.Value.Get(i);
-                input.XDirection = direction;
+                input.Direction = direction;
             }
         }
     }

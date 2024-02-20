@@ -1,8 +1,6 @@
 using Game.Scripts.Gameplay.Input.Event_Handling;
-using Game.Scripts.Gameplay.Move.Grounding;
 using Game.Scripts.Gameplay.StaticData;
 using Game.Scripts.Gameplay.Input.Move;
-using Game.Scripts.Gameplay.Move.Jump;
 using Game.Scripts.Gameplay.Move.Walk;
 using Game.Scripts.Gameplay.Physic;
 using Game.Scripts.Gameplay.Player;
@@ -24,7 +22,6 @@ namespace Game.Scripts.Gameplay.Spawn
             
             var world = _world.Value;
             var player = world.NewEntity();
-            var packedPlayer = world.PackEntity(player);
 
             world.GetPool<InputEventsListener>().Add(player);
             world.GetPool<PlayerTag>().Add(player);
@@ -32,19 +29,10 @@ namespace Game.Scripts.Gameplay.Spawn
 
             ref var walk = ref world.GetPool<Walk>().Add(player);
             walk.Speed = config.MoveForce;
-            
-            ref var jump = ref world.GetPool<Jump>().Add(player);
-            jump.Force = config.JumpForce;
 
             ref var physic = ref world.GetPool<Physical2D>().Add(player);
             physic.Collider = view.Collider;
             physic.Body = view.Rigidbody;
-
-            var groundPool = world.GetPool<Ground>();
-            ref var grounding = ref groundPool.Add(player);
-            grounding.groundLayer = config.GroundLayer;
-            
-            view.GroundChecker.Init(packedPlayer, groundPool);
         }
     }
 }
