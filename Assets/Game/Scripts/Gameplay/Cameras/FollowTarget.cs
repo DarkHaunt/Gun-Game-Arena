@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Cameras
 {
-    [Serializable]
     public struct FollowTarget
     {
         public Transform Target;

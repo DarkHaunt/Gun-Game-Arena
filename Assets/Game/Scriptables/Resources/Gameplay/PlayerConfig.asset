@@ -12,8 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a5d7fecd7547ccb362031ae7b82751, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  <JumpForce>k__BackingField: 3000
   <MoveForce>k__BackingField: 50
-  <GroundLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 8
+  <Health>k__BackingField: 100

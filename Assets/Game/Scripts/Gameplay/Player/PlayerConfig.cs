@@ -6,5 +6,6 @@ namespace Game.Scripts.Gameplay.Player
     public class PlayerConfig : ScriptableObject
     {
         [field: SerializeField] public float MoveForce { get; private set; }
+        [field: SerializeField] public float Health { get; private set; }
     }
 }

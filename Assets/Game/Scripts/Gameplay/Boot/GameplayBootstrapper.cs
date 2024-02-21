@@ -14,6 +14,7 @@ using LeoEcsPhysics;
 using UnityEngine;
 using Zenject;
 using System;
+using Game.Scripts.Gameplay.Damage;
 
 namespace Game.Scripts.Gameplay.Boot
 {
@@ -44,7 +45,8 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(new EnvironmentSetupSystem())
                 .Add(new InputHandleSystem())
                 .Add(new MoveSystem())
-                .Add(new FollowSystem());
+                .Add(new FollowSystem())
+                .Add(new DamageApplySystem());
             
             EcsPhysicsEvents.ecsWorld = physicWorld;
 
@@ -59,6 +61,7 @@ namespace Game.Scripts.Gameplay.Boot
         private void SetUpCleanupEvents()
         {
             _fixedUpdateSystems
+                .DelHere<DamageRequest>()
                 .DelHere<AttackEvent>()
                 .DelHerePhysics();
         }
