@@ -1,6 +1,6 @@
 namespace Game.Scripts.Gameplay.HealthHandling
 {
-    public struct Health
+    public struct HealthData
     {
         public float MaxHealth;
         public float Current;

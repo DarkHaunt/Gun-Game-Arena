@@ -1,16 +1,16 @@
 using Game.Scripts.Gameplay.HealthHandling;
-using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
+using Leopotam.EcsLite.Di;
 using UnityEngine;
 
-namespace Game.Scripts.Gameplay.Damage
+namespace Game.Scripts.Gameplay.Entities.Damage
 {
     public class DamageApplySystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<DamageRequest, Health>> _filter = default;
+        private readonly EcsFilterInject<Inc<DamageRequest, HealthData>> _filter = default;
         
         private readonly EcsPoolInject<DamageRequest> _damagePool = default;
-        private readonly EcsPoolInject<Health> _healthPool = default;
+        private readonly EcsPoolInject<HealthData> _healthPool = default;
         
         public void Run(IEcsSystems systems)
         {

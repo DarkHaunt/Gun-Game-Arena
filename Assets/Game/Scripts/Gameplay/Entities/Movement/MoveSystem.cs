@@ -1,8 +1,8 @@
-using Game.Scripts.Gameplay.Physics;
+using Game.Scripts.Gameplay.Entities.Physics;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 
-namespace Game.Scripts.Gameplay.Moving
+namespace Game.Scripts.Gameplay.Entities.Movement
 {
     public class MoveSystem : IEcsRunSystem
     {

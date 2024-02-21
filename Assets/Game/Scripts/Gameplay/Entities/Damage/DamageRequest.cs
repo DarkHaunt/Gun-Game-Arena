@@ -1,4 +1,4 @@
-namespace Game.Scripts.Gameplay.Damage
+namespace Game.Scripts.Gameplay.Entities.Damage
 {
     public struct DamageRequest
     {

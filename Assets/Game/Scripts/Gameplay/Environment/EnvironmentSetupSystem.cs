@@ -1,9 +1,9 @@
 using Game.Scripts.Gameplay.HealthHandling;
 using Game.Scripts.Gameplay.StaticData;
-using Game.Scripts.Gameplay.Physics;
 using Game.Scripts.Gameplay.Cameras;
-using Game.Scripts.Gameplay.Moving;
-using Game.Scripts.Gameplay.Player;
+using Game.Scripts.Gameplay.Entities.Movement;
+using Game.Scripts.Gameplay.Entities.Physics;
+using Game.Scripts.Gameplay.Entities.Player;
 using Game.Scripts.Gameplay.Input;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
@@ -47,7 +47,7 @@ namespace Game.Scripts.Gameplay.Environment
             world.GetPool<InputListener>().Add(player);
             world.GetPool<PlayerTag>().Add(player);
             
-            ref var health  = ref world.GetPool<Health>().Add(player);
+            ref var health  = ref world.GetPool<HealthData>().Add(player);
             health.Init(config.Health);
 
             ref var walk = ref world.GetPool<Move>().Add(player);

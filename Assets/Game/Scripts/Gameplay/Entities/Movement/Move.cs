@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Game.Scripts.Gameplay.Moving
+namespace Game.Scripts.Gameplay.Entities.Movement
 {
     [Serializable]
     public struct Move

@@ -1,5 +1,5 @@
+using Game.Scripts.Gameplay.Entities.Movement;
 using Game.Scripts.Gameplay.Input.Events;
-using Game.Scripts.Gameplay.Moving;
 using Game.Scripts.Input;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;

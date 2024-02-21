@@ -5,7 +5,6 @@ using Game.Scripts.Gameplay.Input.Events;
 using Game.Scripts.Gameplay.Environment;
 using Leopotam.EcsLite.ExtendedSystems;
 using Game.Scripts.Gameplay.Cameras;
-using Game.Scripts.Gameplay.Moving;
 using Game.Scripts.Gameplay.Input;
 using Leopotam.EcsLite.Di;
 using Game.Scripts.Input;
@@ -14,7 +13,8 @@ using LeoEcsPhysics;
 using UnityEngine;
 using Zenject;
 using System;
-using Game.Scripts.Gameplay.Damage;
+using Game.Scripts.Gameplay.Entities.Damage;
+using Game.Scripts.Gameplay.Entities.Movement;
 
 namespace Game.Scripts.Gameplay.Boot
 {
