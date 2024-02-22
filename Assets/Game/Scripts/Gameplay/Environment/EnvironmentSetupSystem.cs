@@ -13,8 +13,8 @@ namespace Game.Scripts.Gameplay.Environment
 {
     public class EnvironmentSetupSystem : IEcsInitSystem
     {
-        private readonly EcsCustomInject<Camera> _camera;
-
+        private readonly EcsCustomInject<Camera> _camera = default;
+        
         private readonly EcsWorldInject _world = default;
 
 
