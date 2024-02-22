@@ -35,7 +35,7 @@ namespace Game.Scripts.Gameplay.Environment
             follower.Offset = config.CameraOffset;
             follower.Target = followTarget;
         }
-
+        
         private PlayerView SetUpPlayer()
         {
             var view = Object.Instantiate(Resources.Load<PlayerView>(Indents.Path.PlayerViewPath));

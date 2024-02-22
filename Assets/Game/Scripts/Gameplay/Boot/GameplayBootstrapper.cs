@@ -3,7 +3,7 @@ using Game.Scripts.Infrastructure.RootStateMachine;
 using Game.Scripts.Gameplay.Entities.Cooldown;
 using Game.Scripts.Gameplay.Entities.Movement;
 using Game.Scripts.Gameplay.Entities.Damage;
-using Game.Scripts.Gameplay.Input.Events;
+using Game.Scripts.Gameplay.Entities.Attack;
 using Game.Scripts.Gameplay.Environment;
 using Leopotam.EcsLite.ExtendedSystems;
 using Game.Scripts.Gameplay.Cameras;
@@ -55,7 +55,8 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(new CooldownSystem())
                 .Add(new MoveSystem())
                 .Add(new FollowSystem())
-                .Add(new DamageApplySystem());
+                .Add(new DamageApplySystem())
+                .Add(new AttackSystem());
 
             _updateSystems = new EcsSystems(defaultWorld);
             _updateSystems
@@ -68,7 +69,7 @@ namespace Game.Scripts.Gameplay.Boot
         {
             _fixedUpdateSystems
                 .DelHere<DamageRequest>()
-                .DelHere<AttackEvent>()
+                .DelHere<AttackRequest>()
                 .DelHerePhysics();
         }
 
