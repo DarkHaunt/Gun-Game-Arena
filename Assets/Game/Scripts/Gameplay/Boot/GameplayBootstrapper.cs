@@ -16,6 +16,7 @@ using LeoEcsPhysics;
 using UnityEngine;
 using Zenject;
 using System;
+using Game.Scripts.Gameplay.Player.Targeting;
 
 namespace Game.Scripts.Gameplay.Boot
 {
@@ -55,6 +56,7 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(new CooldownSystem())
                 .Add(new MoveSystem())
                 .Add(new FollowSystem())
+                .Add(new TargetCheckSystem())
                 .Add(new DamageApplySystem())
                 .Add(new AttackSystem());
 
@@ -68,6 +70,7 @@ namespace Game.Scripts.Gameplay.Boot
         private void SetUpCleanupEvents()
         {
             _fixedUpdateSystems
+                .DelHere<TargetCheckRequest>()
                 .DelHere<DamageRequest>()
                 .DelHere<AttackRequest>()
                 .DelHerePhysics();

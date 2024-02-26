@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Scripts.Gameplay.Entities.Player
+namespace Game.Scripts.Gameplay.Player.Base
 {
     public class PlayerView : MonoBehaviour
     {

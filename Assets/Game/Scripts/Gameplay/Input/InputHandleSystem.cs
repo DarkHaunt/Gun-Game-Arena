@@ -1,5 +1,5 @@
-using Game.Scripts.Gameplay.Entities.TargetCheck;
 using Game.Scripts.Gameplay.Entities.Movement;
+using Game.Scripts.Gameplay.Player.Targeting;
 using UnityEngine.InputSystem;
 using Leopotam.EcsLite.Di;
 using Game.Scripts.Input;

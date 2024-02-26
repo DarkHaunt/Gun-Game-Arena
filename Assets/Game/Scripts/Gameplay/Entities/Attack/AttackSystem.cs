@@ -12,6 +12,7 @@ namespace Game.Scripts.Gameplay.Entities.Attack
         private readonly EcsPoolInject<CooldownRequest> _cooldownRequestPool = default;
         private readonly EcsPoolInject<AttackRequest> _attackRequestPool = default;
         private readonly EcsPoolInject<DamageRequest> _damageRequestPool = default;
+        
         private readonly EcsPoolInject<AttackData> _dataPool = default;
         
         public void Run(IEcsSystems systems)
