@@ -27,6 +27,7 @@ namespace Game.Scripts.Gameplay.Player.Targeting
                     .First();
                 
                 ref var target = ref closest;
+
                 _attackRequests.Value.Add(target);
             }
         }

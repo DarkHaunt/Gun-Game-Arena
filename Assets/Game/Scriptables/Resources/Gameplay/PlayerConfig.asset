@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MoveForce>k__BackingField: 50
   <Health>k__BackingField: 100
+  <Cooldown>k__BackingField: 2
+  <Damage>k__BackingField: 1

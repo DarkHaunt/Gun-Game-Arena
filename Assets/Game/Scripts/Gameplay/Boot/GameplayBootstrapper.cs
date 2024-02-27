@@ -53,37 +53,42 @@ namespace Game.Scripts.Gameplay.Boot
 
             _fixedUpdateSystems = new EcsSystems(defaultWorld);
             _fixedUpdateSystems
-                .Add(new CooldownSystem())
+                .Add(new EnvironmentSetupSystem())
                 .Add(new MoveSystem())
                 .Add(new FollowSystem())
-                .Add(new TargetCheckSystem())
-                .Add(new DamageApplySystem())
-                .Add(new AttackSystem());
+                ;
 
             _updateSystems = new EcsSystems(defaultWorld);
             _updateSystems
-                .Add(new EnvironmentSetupSystem())
                 .Add(new TimeSystem())
-                .Add(new InputHandleSystem());
+                .Add(new InputHandleSystem())
+                .Add(new CooldownSystem())
+                .Add(new TargetCheckSystem())
+                .Add(new AttackSystem())
+                .Add(new DamageApplySystem())
+                ;
         }
 
         private void SetUpCleanupEvents()
         {
             _fixedUpdateSystems
+                .DelHerePhysics();
+
+            _updateSystems
                 .DelHere<TargetCheckRequest>()
                 .DelHere<DamageRequest>()
                 .DelHere<AttackRequest>()
-                .DelHerePhysics();
+                ;
         }
 
         private void InjectInit()
         {
             _updateSystems
-                .Inject(_inputActions, new TimeService(), _camera)
+                .Inject(_inputActions, new TimeService())
                 .Init();
 
             _fixedUpdateSystems
-                .Inject()
+                .Inject(_camera)
                 .Init();
         }
 
