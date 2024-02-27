@@ -10,7 +10,9 @@ namespace Game.Scripts.Gameplay.StaticData
         public static class Path
         {
             public const string EnemyViewPath = "Enemy";
+            public const string LevelViewPath = "Level";
             public const string PlayerViewPath = "Player";
+            
             public const string PlayerConfigPath = "Gameplay/PlayerConfig";
             public const string EnvironmentConfigPath = "Gameplay/EnvironmentConfig";
         }

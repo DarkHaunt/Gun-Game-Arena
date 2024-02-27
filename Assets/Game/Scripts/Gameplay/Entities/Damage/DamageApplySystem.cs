@@ -1,6 +1,6 @@
 using Game.Scripts.Gameplay.HealthHandling;
-using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Entities.Damage

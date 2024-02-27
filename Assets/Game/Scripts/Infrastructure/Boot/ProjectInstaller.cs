@@ -1,3 +1,4 @@
+using Game.Scripts.Infrastructure.Assets;
 using Game.Scripts.Infrastructure.RootStateMachine.States;
 using Game.Scripts.Infrastructure.RootStateMachine;
 using Game.Scripts.Infrastructure.Scenes;
@@ -19,11 +20,17 @@ namespace Game.Scripts.Infrastructure.Boot
         public override void InstallBindings()
         {
             RegisterInputSystem();
+            RegisterAssetProvider();
 
             RegisterRootStateMachine();
             RegisterSceneLoadingComponents();
 
             Debug.Log($"<color=#76d1e3>ProjectInstaller Executed</color>");
+        }
+
+        private void RegisterAssetProvider()
+        {
+            Container.Bind<AssetProvider>().AsSingle();
         }
 
         private void RegisterInputSystem()

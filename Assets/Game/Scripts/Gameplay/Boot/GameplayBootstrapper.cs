@@ -1,7 +1,9 @@
 using Game.Scripts.Infrastructure.RootStateMachine.States;
 using Game.Scripts.Infrastructure.RootStateMachine;
+using Game.Scripts.Gameplay.Entities.Creation;
 using Game.Scripts.Gameplay.Entities.Cooldown;
 using Game.Scripts.Gameplay.Entities.Movement;
+using Game.Scripts.Gameplay.Player.Targeting;
 using Game.Scripts.Gameplay.Entities.Damage;
 using Game.Scripts.Gameplay.Entities.Attack;
 using Game.Scripts.Gameplay.Environment;
@@ -16,7 +18,6 @@ using LeoEcsPhysics;
 using UnityEngine;
 using Zenject;
 using System;
-using Game.Scripts.Gameplay.Player.Targeting;
 
 namespace Game.Scripts.Gameplay.Boot
 {
@@ -88,7 +89,7 @@ namespace Game.Scripts.Gameplay.Boot
                 .Init();
 
             _fixedUpdateSystems
-                .Inject(_camera)
+                .Inject(_camera, new EntitiesFactory())
                 .Init();
         }
 
