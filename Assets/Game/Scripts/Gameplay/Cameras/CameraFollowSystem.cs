@@ -4,10 +4,10 @@ using Leopotam.EcsLite;
 
 namespace Game.Scripts.Gameplay.Cameras
 {
-    public class FollowSystem : IEcsRunSystem
+    public class CameraFollowSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<FollowTarget>> _filter = default;
-        private readonly EcsPoolInject<FollowTarget> _pool = default;
+        private readonly EcsFilterInject<Inc<CameraFollow>> _filter = default;
+        private readonly EcsPoolInject<CameraFollow> _pool = default;
         
         public void Run(IEcsSystems systems)
         {

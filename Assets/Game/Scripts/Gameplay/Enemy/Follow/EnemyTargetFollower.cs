@@ -1,14 +1,16 @@
 using UnityEngine;
 
-namespace Game.Scripts.Gameplay.Cameras
+namespace Game.Scripts.Gameplay.Enemy.Follow
 {
-    public struct FollowTarget
+    public struct EnemyTargetFollower
     {
         public Transform Target;
         public Transform Self;
-        public Vector3 Offset;
 
         public Vector3 TargetPos
             => Target.position;
+        
+        public Vector3 SelfPos
+            => Self.position;
     }
 }

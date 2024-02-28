@@ -22,8 +22,8 @@ namespace Game.Scripts.Gameplay.Environment
             var world = _world.Value;
             var level = SpawnLevel();
             
-            var player = _entitiesFactory.Value.SetUpPlayer(world, level.PlayerSpawnPoint.position);
-            _entitiesFactory.Value.SetUpEnemy(world, level.EnemiesSpawnPoints.PickRandom().position);
+            var player = _entitiesFactory.Value.CreatePlayer(world, level.PlayerSpawnPoint.position);
+            _entitiesFactory.Value.CreateEnemy(world, player.transform, level.EnemiesSpawnPoints.PickRandom().position);
             
             SetUpCamera(world, player.transform);
         }
@@ -33,7 +33,7 @@ namespace Game.Scripts.Gameplay.Environment
             var camera = world.NewEntity();
             var config = Resources.Load<EnvironmentConfig>(Indents.Path.EnvironmentConfigPath);
 
-            ref var follower = ref world.GetPool<FollowTarget>().Add(camera);
+            ref var follower = ref world.GetPool<CameraFollow>().Add(camera);
             follower.Self = _camera.Value.transform;
             follower.Offset = config.CameraOffset;
             follower.Target = followTarget;

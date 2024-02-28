@@ -18,6 +18,7 @@ using LeoEcsPhysics;
 using UnityEngine;
 using Zenject;
 using System;
+using Game.Scripts.Gameplay.Enemy.Follow;
 
 namespace Game.Scripts.Gameplay.Boot
 {
@@ -55,8 +56,9 @@ namespace Game.Scripts.Gameplay.Boot
             _fixedUpdateSystems = new EcsSystems(defaultWorld);
             _fixedUpdateSystems
                 .Add(new EnvironmentSetupSystem())
+                .Add(new EnemyTargetFollowSystem())
                 .Add(new MoveSystem())
-                .Add(new FollowSystem())
+                .Add(new CameraFollowSystem())
                 ;
 
             _updateSystems = new EcsSystems(defaultWorld);

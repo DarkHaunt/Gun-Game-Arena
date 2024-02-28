@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Game.Scripts.Extensions;
+using Game.Scripts.Gameplay.Enemy.Follow;
 using Game.Scripts.Gameplay.Entities.Enemy.Base;
 using Game.Scripts.Gameplay.Entities.Movement;
 using Game.Scripts.Gameplay.Player.Targeting;
@@ -18,7 +18,7 @@ namespace Game.Scripts.Gameplay.Entities.Creation
 {
     public class EntitiesFactory : IEcsSystem
     {
-        public PlayerView SetUpPlayer(EcsWorld world, Vector3 pos)
+        public PlayerView CreatePlayer(EcsWorld world, Vector3 pos)
         {
             var view = Object.Instantiate(Resources.Load<PlayerView>(Indents.Path.PlayerViewPath));
             view.transform.SetInPosition(pos);
@@ -49,15 +49,19 @@ namespace Game.Scripts.Gameplay.Entities.Creation
             return view;
         } 
         
-        public void SetUpEnemy(EcsWorld world, Vector3 pos)
+        public void CreateEnemy(EcsWorld world, Transform followTarget, Vector3 pos)
         {
             var view = Object.Instantiate(Resources.Load<EnemyView>(Indents.Path.EnemyViewPath));
             view.transform.SetInPosition(pos);
             
-            var config = Resources.Load<PlayerConfig>(Indents.Path.PlayerConfigPath);
+            var config = Resources.Load<PlayerConfig>(Indents.Path.EnemyConfigPath);
             var enemy = world.NewEntity();
 
             world.GetPool<EnemyTag>().Add(enemy);
+            
+            ref var follow  = ref world.GetPool<EnemyTargetFollower>().Add(enemy);
+            follow.Self = view.transform;
+            follow.Target = followTarget;
             
             ref var health  = ref world.GetPool<HealthData>().Add(enemy);
             health.Init(config.Health);
