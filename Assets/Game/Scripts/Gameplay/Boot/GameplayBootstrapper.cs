@@ -18,13 +18,19 @@ using LeoEcsPhysics;
 using UnityEngine;
 using Zenject;
 using System;
+using Cysharp.Threading.Tasks;
 using Game.Scripts.Gameplay.Enemy.Follow;
+using Game.Scripts.Gameplay.Entities.Enemy.Base;
+using Game.Scripts.Gameplay.Player.Base;
+using Game.Scripts.Gameplay.StaticData;
+using Game.Scripts.Infrastructure.Assets;
 
 namespace Game.Scripts.Gameplay.Boot
 {
     public class GameplayBootstrapper : IInitializable, IFixedTickable, ITickable, IDisposable
     {
         private readonly GameStateMachine _gameStateMachine;
+        private readonly AssetProvider _assetProvider;
         private readonly InputActions _inputActions;
         private readonly Camera _camera;
         
@@ -32,9 +38,10 @@ namespace Game.Scripts.Gameplay.Boot
         private EcsSystems _updateSystems;
 
         
-        public GameplayBootstrapper(GameStateMachine gameStateMachine, InputActions inputActions, Camera camera)
+        public GameplayBootstrapper(GameStateMachine gameStateMachine, AssetProvider assetProvider, InputActions inputActions, Camera camera)
         {
             _gameStateMachine = gameStateMachine;
+            _assetProvider = assetProvider;
             _inputActions = inputActions;
             _camera = camera;
         }
@@ -42,6 +49,17 @@ namespace Game.Scripts.Gameplay.Boot
 
         public async void Initialize()
         {
+            var prewarms = new[]
+            {
+                _assetProvider.LoadAndCacheAsset<EnemyView>(Indents.Path.EnemyViewPath),
+                _assetProvider.LoadAndCacheAsset<PlayerConfig>(Indents.Path.EnemyConfigPath),
+                
+                _assetProvider.LoadAndCacheAsset<PlayerView>(Indents.Path.PlayerViewPath),
+                _assetProvider.LoadAndCacheAsset<PlayerConfig>(Indents.Path.PlayerConfigPath),
+            };
+
+            await UniTask.WhenAll(prewarms);
+            
             await _gameStateMachine.Enter<GameplayState>();
             
             CreateSystems();
@@ -91,7 +109,7 @@ namespace Game.Scripts.Gameplay.Boot
                 .Init();
 
             _fixedUpdateSystems
-                .Inject(_camera, new EntitiesFactory())
+                .Inject(_camera, new EntitiesFactory(_assetProvider))
                 .Init();
         }
 

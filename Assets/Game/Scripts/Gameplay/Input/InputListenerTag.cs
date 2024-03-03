@@ -1,4 +1,4 @@
 namespace Game.Scripts.Gameplay.Input
 {
-    public struct InputListener { }
+    public struct InputListenerTag { }
 }

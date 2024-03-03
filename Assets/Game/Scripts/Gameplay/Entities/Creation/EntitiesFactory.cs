@@ -7,6 +7,7 @@ using Game.Scripts.Gameplay.Entities.Physics;
 using Game.Scripts.Gameplay.Entities.Attack;
 using Game.Scripts.Gameplay.HealthHandling;
 using Game.Scripts.Gameplay.Entities.Enemy;
+using Game.Scripts.Infrastructure.Assets;
 using Game.Scripts.Gameplay.Player.Base;
 using Game.Scripts.Gameplay.StaticData;
 using Game.Scripts.Gameplay.Input;
@@ -18,6 +19,13 @@ namespace Game.Scripts.Gameplay.Entities.Creation
 {
     public class EntitiesFactory : IEcsSystem
     {
+        private readonly AssetProvider _assetProvider;
+
+        public EntitiesFactory(AssetProvider assetProvider)
+        {
+            _assetProvider = assetProvider;
+        }
+        
         public PlayerView CreatePlayer(EcsWorld world, Vector3 pos)
         {
             var view = Object.Instantiate(Resources.Load<PlayerView>(Indents.Path.PlayerViewPath));
@@ -26,7 +34,7 @@ namespace Game.Scripts.Gameplay.Entities.Creation
             var config = Resources.Load<PlayerConfig>(Indents.Path.PlayerConfigPath);
             var player = world.NewEntity();
 
-            world.GetPool<InputListener>().Add(player);
+            world.GetPool<InputListenerTag>().Add(player);
             world.GetPool<PlayerTag>().Add(player);
             
             ref var health  = ref world.GetPool<HealthData>().Add(player);
@@ -60,6 +68,7 @@ namespace Game.Scripts.Gameplay.Entities.Creation
             world.GetPool<EnemyTag>().Add(enemy);
             
             ref var follow  = ref world.GetPool<EnemyTargetFollower>().Add(enemy);
+            follow.StopFollowDistance = config.AttackRadius;
             follow.Self = view.transform;
             follow.Target = followTarget;
             

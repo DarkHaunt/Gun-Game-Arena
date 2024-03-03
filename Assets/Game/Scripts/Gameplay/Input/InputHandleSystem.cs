@@ -12,8 +12,8 @@ namespace Game.Scripts.Gameplay.Input
     {
         private readonly EcsCustomInject<InputActions> _inputActions;
 
-        private readonly EcsFilterInject<Inc<Move, InputListener>> _moveHandlers = default;
-        private readonly EcsFilterInject<Inc<InputListener>> _listeners = default;
+        private readonly EcsFilterInject<Inc<Move, InputListenerTag>> _moveHandlers = default;
+        private readonly EcsFilterInject<Inc<InputListenerTag>> _listeners = default;
         
         private readonly EcsPoolInject<TargetCheckRequest> _targetCheckRequestPool = default;
         private readonly EcsPoolInject<Move> _movePool = default;

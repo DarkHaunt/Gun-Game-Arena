@@ -4,6 +4,7 @@ namespace Game.Scripts.Gameplay.Enemy.Follow
 {
     public struct EnemyTargetFollower
     {
+        public float StopFollowDistance;
         public Transform Target;
         public Transform Self;
 
