@@ -16,4 +16,4 @@ MonoBehaviour:
   <Health>k__BackingField: 100
   <Cooldown>k__BackingField: 1
   <Damage>k__BackingField: 1
-  <AttackRadius>k__BackingField: 3
+  <AttackDistance>k__BackingField: 4

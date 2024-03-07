@@ -11,6 +11,6 @@ namespace Game.Scripts.Gameplay.Player.Base
         [field: Header("--- Weapon Future Params ---")]
         [field: SerializeField] public float Cooldown { get; private set; }
         [field: SerializeField] public float Damage { get; private set; }
-        [field: SerializeField] public float AttackRadius { get; private set; }
+        [field: SerializeField] public float AttackDistance { get; private set; }
     }
 }

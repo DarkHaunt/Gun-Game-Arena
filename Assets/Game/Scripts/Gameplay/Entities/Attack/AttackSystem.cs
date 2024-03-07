@@ -21,7 +21,7 @@ namespace Game.Scripts.Gameplay.Entities.Attack
             {
                 ref var request = ref _attackRequestPool.Value.Get(entity);
                 ref var attack = ref _dataPool.Value.Get(entity);
-
+                
                 var damageEntity = request.Target.Id;
                 ref var damage = ref _damageRequestPool.Value.Add(damageEntity);
                 damage.Damage = attack.Damage;

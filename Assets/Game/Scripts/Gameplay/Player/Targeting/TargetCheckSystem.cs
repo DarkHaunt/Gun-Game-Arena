@@ -1,8 +1,8 @@
-using System.Linq;
 using Game.Scripts.Gameplay.Entities.Attack;
 using Game.Scripts.Gameplay.Player.Base;
-using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using Leopotam.EcsLite;
+using System.Linq;
 using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Player.Targeting

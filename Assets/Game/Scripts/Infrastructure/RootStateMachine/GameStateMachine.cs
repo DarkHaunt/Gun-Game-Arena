@@ -13,7 +13,7 @@ namespace Game.Scripts.Infrastructure.RootStateMachine
         
         public GameStateMachine(BootState.Factory bootFactory, MenuState.Factory menuFactory, GameplayState.Factory gameFactory)
         {
-            _states = new Dictionary<Type, IAsyncState>(4)
+            _states = new Dictionary<Type, IAsyncState>(3)
             {
                 [typeof(BootState)] = bootFactory.Create(),
                 [typeof(MenuState)] = menuFactory.Create(),

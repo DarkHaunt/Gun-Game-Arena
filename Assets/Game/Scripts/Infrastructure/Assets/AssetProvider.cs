@@ -10,6 +10,17 @@ namespace Game.Scripts.Infrastructure.Assets
         private readonly Dictionary<string, Object> _cachedObjects = new();
 
 
+        public T GetSync<T>(string path) where T : Object
+        {
+            if (_cachedObjects.TryGetValue(path, out var prefab))
+                return prefab as T;
+            
+            var obj = Resources.Load<T>(path);
+            _cachedObjects[path] = obj;
+
+            return obj;
+        }
+        
         public async UniTask<T> Get<T>(string path) where T : Object
         {
             if (_cachedObjects.TryGetValue(path, out var prefab))

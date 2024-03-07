@@ -28,10 +28,11 @@ namespace Game.Scripts.Gameplay.Entities.Creation
         
         public PlayerView CreatePlayer(EcsWorld world, Vector3 pos)
         {
-            var view = Object.Instantiate(Resources.Load<PlayerView>(Indents.Path.PlayerViewPath));
+            var prefab = _assetProvider.GetSync<PlayerView>(Indents.Path.PlayerViewPath);
+            var view = Object.Instantiate(prefab);
             view.transform.SetInPosition(pos);
 
-            var config = Resources.Load<PlayerConfig>(Indents.Path.PlayerConfigPath);
+            var config = _assetProvider.GetSync<PlayerConfig>(Indents.Path.PlayerConfigPath);
             var player = world.NewEntity();
 
             world.GetPool<InputListenerTag>().Add(player);
@@ -41,6 +42,7 @@ namespace Game.Scripts.Gameplay.Entities.Creation
             health.Init(config.Health);
             
             ref var attack  = ref world.GetPool<AttackData>().Add(player);
+            attack.Distance = config.AttackDistance;
             attack.Cooldown = config.Cooldown;
             attack.Damage = config.Damage;
             
@@ -59,16 +61,17 @@ namespace Game.Scripts.Gameplay.Entities.Creation
         
         public void CreateEnemy(EcsWorld world, Transform followTarget, Vector3 pos)
         {
-            var view = Object.Instantiate(Resources.Load<EnemyView>(Indents.Path.EnemyViewPath));
+            var prefab = _assetProvider.GetSync<EnemyView>(Indents.Path.EnemyViewPath);
+            var view = Object.Instantiate(prefab);
             view.transform.SetInPosition(pos);
             
-            var config = Resources.Load<PlayerConfig>(Indents.Path.EnemyConfigPath);
+            var config = _assetProvider.GetSync<PlayerConfig>(Indents.Path.EnemyConfigPath);
             var enemy = world.NewEntity();
 
             world.GetPool<EnemyTag>().Add(enemy);
             
             ref var follow  = ref world.GetPool<EnemyTargetFollower>().Add(enemy);
-            follow.StopFollowDistance = config.AttackRadius;
+            follow.StopFollowDistance = config.AttackDistance;
             follow.Self = view.transform;
             follow.Target = followTarget;
             
