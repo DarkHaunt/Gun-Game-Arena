@@ -11,6 +11,7 @@ using Game.Scripts.Infrastructure.Assets;
 using Game.Scripts.Gameplay.Player.Base;
 using Game.Scripts.Gameplay.StaticData;
 using Game.Scripts.Gameplay.Input;
+using Game.Scripts.Gameplay.Weapons;
 using Leopotam.EcsLite;
 using UnityEngine;
 
@@ -40,6 +41,9 @@ namespace Game.Scripts.Gameplay.Entities.Creation
             
             ref var health  = ref world.GetPool<HealthData>().Add(player);
             health.Init(config.Health);
+            
+            ref var weaponData  = ref world.GetPool<WeaponData>().Add(player);
+            weaponData.Copy(Indents.Player.DefaultWeapon);
             
             ref var attack  = ref world.GetPool<AttackData>().Add(player);
             attack.Distance = config.AttackDistance;

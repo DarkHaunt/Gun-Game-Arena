@@ -14,16 +14,17 @@ using Game.Scripts.Gameplay.Time;
 using Leopotam.EcsLite.Di;
 using Game.Scripts.Input;
 using Leopotam.EcsLite;
-using LeoEcsPhysics;
-using UnityEngine;
-using Zenject;
-using System;
 using Cysharp.Threading.Tasks;
 using Game.Scripts.Gameplay.Enemy.Follow;
 using Game.Scripts.Gameplay.Entities.Enemy.Base;
 using Game.Scripts.Gameplay.Player.Base;
 using Game.Scripts.Gameplay.StaticData;
 using Game.Scripts.Infrastructure.Assets;
+using LeoEcsPhysics;
+using UnityEngine;
+using Zenject;
+using System;
+using Game.Scripts.Gameplay.Weapons;
 
 namespace Game.Scripts.Gameplay.Boot
 {
@@ -85,6 +86,7 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(new InputHandleSystem())
                 .Add(new CooldownSystem())
                 .Add(new TargetCheckSystem())
+                .Add(new WeaponHandleSystem())
                 .Add(new AttackSystem())
                 .Add(new DamageApplySystem())
                 ;
