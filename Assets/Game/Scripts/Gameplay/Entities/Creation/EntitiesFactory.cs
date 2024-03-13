@@ -10,8 +10,8 @@ using Game.Scripts.Gameplay.Entities.Enemy;
 using Game.Scripts.Infrastructure.Assets;
 using Game.Scripts.Gameplay.Player.Base;
 using Game.Scripts.Gameplay.StaticData;
-using Game.Scripts.Gameplay.Input;
 using Game.Scripts.Gameplay.Weapons;
+using Game.Scripts.Gameplay.Input;
 using Leopotam.EcsLite;
 using UnityEngine;
 
@@ -29,12 +29,13 @@ namespace Game.Scripts.Gameplay.Entities.Creation
         
         public PlayerView CreatePlayer(EcsWorld world, Vector3 pos)
         {
-            var prefab = _assetProvider.GetSync<PlayerView>(Indents.Path.PlayerViewPath);
-            var view = Object.Instantiate(prefab);
-            view.transform.SetInPosition(pos);
-
             var config = _assetProvider.GetSync<PlayerConfig>(Indents.Path.PlayerConfigPath);
+            var prefab = _assetProvider.GetSync<PlayerView>(Indents.Path.PlayerViewPath);
             var player = world.NewEntity();
+            
+            var view = Object.Instantiate(prefab);
+            view.Construct(world.PackEntity(player));
+            view.transform.SetInPosition(pos);
 
             world.GetPool<InputListenerTag>().Add(player);
             world.GetPool<PlayerTag>().Add(player);
@@ -65,12 +66,14 @@ namespace Game.Scripts.Gameplay.Entities.Creation
         
         public void CreateEnemy(EcsWorld world, Transform followTarget, Vector3 pos)
         {
-            var prefab = _assetProvider.GetSync<EnemyView>(Indents.Path.EnemyViewPath);
-            var view = Object.Instantiate(prefab);
-            view.transform.SetInPosition(pos);
-            
             var config = _assetProvider.GetSync<PlayerConfig>(Indents.Path.EnemyConfigPath);
+            var prefab = _assetProvider.GetSync<EnemyView>(Indents.Path.EnemyViewPath);
+            
+            var view = Object.Instantiate(prefab);
             var enemy = world.NewEntity();
+            
+            view.Construct(world.PackEntity(enemy));
+            view.transform.SetInPosition(pos);
 
             world.GetPool<EnemyTag>().Add(enemy);
             

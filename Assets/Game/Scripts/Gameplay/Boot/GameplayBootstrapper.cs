@@ -25,6 +25,7 @@ using UnityEngine;
 using Zenject;
 using System;
 using Game.Scripts.Gameplay.Weapons;
+using Game.Scripts.Gameplay.Weapons.Overlap;
 
 namespace Game.Scripts.Gameplay.Boot
 {
@@ -75,6 +76,7 @@ namespace Game.Scripts.Gameplay.Boot
             _fixedUpdateSystems = new EcsSystems(defaultWorld);
             _fixedUpdateSystems
                 .Add(new EnvironmentSetupSystem())
+                .Add(new OverlapCircleSystem())
                 .Add(new EnemyTargetFollowSystem())
                 .Add(new MoveSystem())
                 .Add(new CameraFollowSystem())
@@ -95,6 +97,8 @@ namespace Game.Scripts.Gameplay.Boot
         private void SetUpCleanupEvents()
         {
             _fixedUpdateSystems
+                .DelHere<OverlapCircleRequest>()
+                .DelHere<OverlappedTag>()
                 .DelHerePhysics();
 
             _updateSystems
