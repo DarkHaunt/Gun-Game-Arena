@@ -88,7 +88,11 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(new InputHandleSystem())
                 .Add(new CooldownSystem())
                 .Add(new TargetCheckSystem())
+                
+                // Weapons Feature
+                .Add(new WeaponSwitchSystem())
                 .Add(new WeaponHandleSystem())
+                
                 .Add(new AttackSystem())
                 .Add(new DamageApplySystem())
                 ;
@@ -102,6 +106,8 @@ namespace Game.Scripts.Gameplay.Boot
                 .DelHerePhysics();
 
             _updateSystems
+                .DelHere<WeaponSwitchRequest>()
+                    
                 .DelHere<TargetCheckRequest>()
                 .DelHere<DamageRequest>()
                 .DelHere<AttackRequest>()

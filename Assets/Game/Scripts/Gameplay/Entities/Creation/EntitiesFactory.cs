@@ -38,13 +38,11 @@ namespace Game.Scripts.Gameplay.Entities.Creation
             view.transform.SetInPosition(pos);
 
             world.GetPool<InputListenerTag>().Add(player);
+            world.GetPool<WeaponHandler>().Add(player);
             world.GetPool<PlayerTag>().Add(player);
             
             ref var health  = ref world.GetPool<HealthData>().Add(player);
             health.Init(config.Health);
-            
-            ref var weaponData  = ref world.GetPool<WeaponData>().Add(player);
-            weaponData.Copy(Indents.Player.DefaultWeapon);
             
             ref var attack  = ref world.GetPool<AttackData>().Add(player);
             attack.Distance = config.AttackDistance;

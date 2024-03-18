@@ -4,18 +4,17 @@ namespace Game.Scripts.Gameplay.StaticData
 {
     public static class Indents
     {
-        public static class Player
+        public static class PlayerIndents
         {
-            public static readonly WeaponData DefaultWeapon = new WeaponData
+            public static readonly WeaponHandleData DefaultWeaponHandle = new()
             {
                 Duration = float.PositiveInfinity,
-                Type = WeaponType.Default
             };
         }
         
         public static class World
         {
-            public const string EventWorld = "events";
+            public const string Events = "events";
         }
 
         public static class Path
