@@ -1,3 +1,4 @@
+using Game.Scripts.Gameplay.Environment;
 using UnityEngine;
 using Zenject;
 
@@ -5,7 +6,7 @@ namespace Game.Scripts.Gameplay.Boot
 {
     public class GameplayInstaller : MonoInstaller
     {
-        [SerializeField] private Camera _camera;
+        [SerializeField] private EnvironmentData _data;
         
         
         public override void InstallBindings()
@@ -13,7 +14,7 @@ namespace Game.Scripts.Gameplay.Boot
             Container
                 .BindInterfacesAndSelfTo<GameplayBootstrapper>()
                 .AsSingle()
-                .WithArguments(_camera);
+                .WithArguments(_data);
         }
     }
 }

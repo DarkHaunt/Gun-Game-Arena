@@ -6,5 +6,6 @@ namespace Game.Scripts.Gameplay.Environment
     public class EnvironmentConfig : ScriptableObject
     {
         [field: SerializeField] public Vector3 CameraOffset { get; private set; }
+        [field: SerializeField] public float NextWeaponSpawnTime { get; private set; }
     }
 }

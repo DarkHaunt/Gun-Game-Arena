@@ -29,17 +29,22 @@ namespace Game.Scripts.Gameplay.Entities.Creation
         
         public PlayerView CreatePlayer(EcsWorld world, Vector3 pos)
         {
-            var config = _assetProvider.GetSync<PlayerConfig>(Indents.Path.PlayerConfigPath);
-            var prefab = _assetProvider.GetSync<PlayerView>(Indents.Path.PlayerViewPath);
+            var config = _assetProvider.GetSync<PlayerConfig>(PathIndents.PlayerConfigPath);
+            var prefab = _assetProvider.GetSync<PlayerView>(PathIndents.PlayerViewPath);
+            
             var player = world.NewEntity();
+            var packed = world.PackEntity(player);
             
             var view = Object.Instantiate(prefab);
-            view.Construct(world.PackEntity(player));
+            view.Construct(packed);
+            view.WeaponPicker.Construct(packed);
             view.transform.SetInPosition(pos);
 
             world.GetPool<InputListenerTag>().Add(player);
-            world.GetPool<WeaponHandler>().Add(player);
             world.GetPool<PlayerTag>().Add(player);
+            
+            ref var weaponHandler = ref world.GetPool<WeaponHandler>().Add(player);
+            weaponHandler.CurrentWeapon = PlayerIndents.DefaultWeapon;
             
             ref var health  = ref world.GetPool<HealthData>().Add(player);
             health.Init(config.Health);
@@ -64,8 +69,8 @@ namespace Game.Scripts.Gameplay.Entities.Creation
         
         public void CreateEnemy(EcsWorld world, Transform followTarget, Vector3 pos)
         {
-            var config = _assetProvider.GetSync<PlayerConfig>(Indents.Path.EnemyConfigPath);
-            var prefab = _assetProvider.GetSync<EnemyView>(Indents.Path.EnemyViewPath);
+            var config = _assetProvider.GetSync<PlayerConfig>(PathIndents.EnemyConfigPath);
+            var prefab = _assetProvider.GetSync<EnemyView>(PathIndents.EnemyViewPath);
             
             var view = Object.Instantiate(prefab);
             var enemy = world.NewEntity();

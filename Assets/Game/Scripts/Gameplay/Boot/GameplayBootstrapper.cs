@@ -21,10 +21,11 @@ using Game.Scripts.Gameplay.Player.Base;
 using Game.Scripts.Gameplay.StaticData;
 using Game.Scripts.Infrastructure.Assets;
 using LeoEcsPhysics;
-using UnityEngine;
 using Zenject;
 using System;
 using Game.Scripts.Gameplay.Weapons;
+using Game.Scripts.Gameplay.Weapons.Configs;
+using Game.Scripts.Gameplay.Weapons.Creation;
 using Game.Scripts.Gameplay.Weapons.Overlap;
 
 namespace Game.Scripts.Gameplay.Boot
@@ -34,18 +35,26 @@ namespace Game.Scripts.Gameplay.Boot
         private readonly GameStateMachine _gameStateMachine;
         private readonly AssetProvider _assetProvider;
         private readonly InputActions _inputActions;
-        private readonly Camera _camera;
+        
+        private readonly EnvironmentData _environmentData;
+        
+        private AvailableWeaponsConfig _availableWeaponsConfig;
+        private EnvironmentConfig _environmentConfig;
         
         private EcsSystems _fixedUpdateSystems;
         private EcsSystems _updateSystems;
-
         
-        public GameplayBootstrapper(GameStateMachine gameStateMachine, AssetProvider assetProvider, InputActions inputActions, Camera camera)
+        private EcsWorld _defaultWorld;
+
+
+        public GameplayBootstrapper(GameStateMachine gameStateMachine, AssetProvider assetProvider, InputActions inputActions, 
+            EnvironmentData environmentData)
         {
             _gameStateMachine = gameStateMachine;
             _assetProvider = assetProvider;
             _inputActions = inputActions;
-            _camera = camera;
+            
+            _environmentData = environmentData;
         }
 
 
@@ -53,12 +62,15 @@ namespace Game.Scripts.Gameplay.Boot
         {
             var prewarms = new[]
             {
-                _assetProvider.LoadAndCacheAsset<EnemyView>(Indents.Path.EnemyViewPath),
-                _assetProvider.LoadAndCacheAsset<PlayerConfig>(Indents.Path.EnemyConfigPath),
+                _assetProvider.LoadAndCacheAsset<EnemyView>(PathIndents.EnemyViewPath),
+                _assetProvider.LoadAndCacheAsset<PlayerConfig>(PathIndents.EnemyConfigPath),
                 
-                _assetProvider.LoadAndCacheAsset<PlayerView>(Indents.Path.PlayerViewPath),
-                _assetProvider.LoadAndCacheAsset<PlayerConfig>(Indents.Path.PlayerConfigPath),
+                _assetProvider.LoadAndCacheAsset<PlayerView>(PathIndents.PlayerViewPath),
+                _assetProvider.LoadAndCacheAsset<PlayerConfig>(PathIndents.PlayerConfigPath),
             };
+            
+            _availableWeaponsConfig = await _assetProvider.Get<AvailableWeaponsConfig>(PathIndents.AvailableWeaponsConfigPath);
+            _environmentConfig = await _assetProvider.Get<EnvironmentConfig>(PathIndents.EnvironmentConfigPath);
 
             await UniTask.WhenAll(prewarms);
             
@@ -71,9 +83,9 @@ namespace Game.Scripts.Gameplay.Boot
 
         private void CreateSystems()
         {
-            var defaultWorld = new EcsWorld();
+            _defaultWorld = new EcsWorld();
 
-            _fixedUpdateSystems = new EcsSystems(defaultWorld);
+            _fixedUpdateSystems = new EcsSystems(_defaultWorld);
             _fixedUpdateSystems
                 .Add(new EnvironmentSetupSystem())
                 .Add(new OverlapCircleSystem())
@@ -82,7 +94,7 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(new CameraFollowSystem())
                 ;
 
-            _updateSystems = new EcsSystems(defaultWorld);
+            _updateSystems = new EcsSystems(_defaultWorld);
             _updateSystems
                 .Add(new TimeSystem())
                 .Add(new InputHandleSystem())
@@ -90,8 +102,8 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(new TargetCheckSystem())
                 
                 // Weapons Feature
-                .Add(new WeaponSwitchSystem())
                 .Add(new WeaponHandleSystem())
+                .Add(new WeaponSwitchSystem())
                 
                 .Add(new AttackSystem())
                 .Add(new DamageApplySystem())
@@ -121,7 +133,8 @@ namespace Game.Scripts.Gameplay.Boot
                 .Init();
 
             _fixedUpdateSystems
-                .Inject(_camera, new EntitiesFactory(_assetProvider))
+                .Inject(_environmentData, _environmentConfig, 
+                    new EntitiesFactory(_assetProvider), new WeaponFactory(_defaultWorld,_availableWeaponsConfig))
                 .Init();
         }
 

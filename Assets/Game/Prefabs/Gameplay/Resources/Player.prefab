@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8344016292419840077}
   - component: {fileID: 3114422379556214306}
   - component: {fileID: 3322201778261530260}
+  - component: {fileID: 728551638955417567}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -161,6 +162,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6360be3ffedd4daaa9242d799c6d500c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <WeaponPicker>k__BackingField: {fileID: 728551638955417567}
   <Rigidbody>k__BackingField: {fileID: 8344016292419840077}
   <Collider>k__BackingField: {fileID: 3114422379556214306}
   <Renderer>k__BackingField: {fileID: 5342509048153636610}
+--- !u!114 &728551638955417567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7603185986567965700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996be2a5d2b747a1a30f04b5e3a66f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
