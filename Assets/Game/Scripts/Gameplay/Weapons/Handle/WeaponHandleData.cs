@@ -8,11 +8,5 @@ namespace Game.Scripts.Gameplay.Weapons
     {
         [HideInInspector] public float HandledDuration;
         public float Duration;
-
-        public void Change(WeaponHandleData other)
-        {
-            HandledDuration = 0f;
-            Duration = other.Duration;
-        }
     }
 }

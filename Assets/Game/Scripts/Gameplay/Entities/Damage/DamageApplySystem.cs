@@ -7,10 +7,10 @@ namespace Game.Scripts.Gameplay.Entities.Damage
 {
     public class DamageApplySystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<DamageRequest, HealthData>> _filter = default;
+        private readonly EcsFilterInject<Inc<DamageRequest, HealthData>> _filter;
         
-        private readonly EcsPoolInject<DamageRequest> _damagePool = default;
-        private readonly EcsPoolInject<HealthData> _healthPool = default;
+        private readonly EcsPoolInject<DamageRequest> _damagePool;
+        private readonly EcsPoolInject<HealthData> _healthPool;
         
         public void Run(IEcsSystems systems)
         {

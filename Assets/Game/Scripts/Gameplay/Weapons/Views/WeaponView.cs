@@ -39,6 +39,6 @@ namespace Game.Scripts.Gameplay.Weapons
         private void Disable()
             => gameObject.SetActive(false);
 
-        protected abstract void PickUpHandleInternal(EcsWorld pickUpEntity, int entity);
+        protected abstract void PickUpHandleInternal(EcsWorld world, int entity);
     }
 }

@@ -5,9 +5,12 @@ namespace Game.Scripts.Gameplay.Entities
 {
     public class EcsEntityView : MonoBehaviour
     {
-        public EcsPackedEntity Entity { get; private set;  }
+        private EcsPackedEntity _entity;
 
         public void Construct(EcsPackedEntity entity)
-            => Entity = entity;
+            => _entity = entity;
+
+        public bool TryUnpackEntity(EcsWorld world, out int entity)
+            => _entity.Unpack(world, out entity);
     }
 }

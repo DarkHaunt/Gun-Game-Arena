@@ -9,12 +9,12 @@ namespace Game.Scripts.Gameplay.Weapons.Overlap
     {
         private readonly Collider2D[] _targets = new Collider2D[50]; // Should be enough
         
-        private readonly EcsFilterInject<Inc<OverlapCircleRequest>> _filter = default;
+        private readonly EcsFilterInject<Inc<OverlapCircleRequest>> _filter;
         
-        private readonly EcsPoolInject<OverlapCircleRequest> _requests = default;
-        private readonly EcsPoolInject<OverlappedTag> _overlapped = default;
+        private readonly EcsPoolInject<OverlapCircleRequest> _requests;
+        private readonly EcsPoolInject<OverlappedTag> _overlapped;
 
-        private readonly EcsWorldInject _world = default;
+        private readonly EcsWorldInject _world;
 
         
         public void Run(IEcsSystems systems)
@@ -38,7 +38,7 @@ namespace Game.Scripts.Gameplay.Weapons.Overlap
             entity = int.MaxValue;
             
             return _targets[i].TryGetComponent(out EcsEntityView view) 
-                   && view.Entity.Unpack(_world.Value, out entity);
+                   && view.TryUnpackEntity(_world.Value, out entity);
         }
     }
 }

@@ -11,5 +11,7 @@ namespace Game.Scripts.Gameplay.StaticData
         
         public const string EnvironmentConfigPath = "Gameplay/EnvironmentConfig";
         public const string AvailableWeaponsConfigPath = "Gameplay/AvailableWeaponsConfig";
+
+        public const string ProjectileViewPath = "Projectile";
     }
 }
