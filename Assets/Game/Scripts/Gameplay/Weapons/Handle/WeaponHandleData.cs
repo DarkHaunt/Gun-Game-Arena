@@ -1,12 +1,11 @@
-using System;
-using UnityEngine;
+using Leopotam.EcsLite;
 
 namespace Game.Scripts.Gameplay.Weapons
 {
-    [Serializable]
     public struct WeaponHandleData
     {
-        [HideInInspector] public float HandledDuration;
+        public EcsPackedEntity WeaponEntity;
+        public float HandledDuration;
         public float Duration;
     }
 }

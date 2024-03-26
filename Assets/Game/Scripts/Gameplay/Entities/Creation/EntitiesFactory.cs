@@ -12,6 +12,7 @@ using Game.Scripts.Gameplay.Player.Base;
 using Game.Scripts.Gameplay.StaticData;
 using Game.Scripts.Gameplay.Weapons;
 using Game.Scripts.Gameplay.Input;
+using Game.Scripts.Gameplay.Weapons.Creation;
 using Leopotam.EcsLite;
 using UnityEngine;
 
@@ -21,10 +22,12 @@ namespace Game.Scripts.Gameplay.Entities.Creation
     public class EntitiesFactory : IEcsSystem
     {
         private readonly AssetProvider _assetProvider;
+        private readonly WeaponFactory _weaponFactory;
 
-        public EntitiesFactory(AssetProvider assetProvider)
+        public EntitiesFactory(AssetProvider assetProvider, WeaponFactory weaponFactory)
         {
             _assetProvider = assetProvider;
+            _weaponFactory = weaponFactory;
         }
         
         public PlayerView CreatePlayer(EcsWorld world, Vector3 pos)
@@ -44,7 +47,7 @@ namespace Game.Scripts.Gameplay.Entities.Creation
             world.GetPool<PlayerTag>().Add(player);
             
             ref var weaponHandler = ref world.GetPool<WeaponHandler>().Add(player);
-            weaponHandler.CurrentWeapon = PlayerIndents.DefaultWeapon;
+            _weaponFactory.CreateDefaultWeapon(out weaponHandler.CurrentHandleData);
             
             ref var health  = ref world.GetPool<HealthData>().Add(player);
             health.Init(config.Health);

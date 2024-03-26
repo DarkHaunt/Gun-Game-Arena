@@ -3,12 +3,10 @@ using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Weapons.Shooting
 {
-    public struct ShootingRequest
+    public struct ShootingData
     {
         public ProjectileConfig ProjectileConfig;
-        
-        public Vector3 ShootPoint;
-        public Vector3 Direction;
+        public Transform ShootPoint;
         public float Cooldown;
     }
 }

@@ -1,13 +1,13 @@
-using Game.Scripts.Gameplay.StaticData;
+using Game.Scripts.Gameplay.Weapons.Creation;
 using Game.Scripts.Gameplay.Time;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite;
-using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Weapons
 {
     public class WeaponHandleSystem : IEcsRunSystem, IEcsInitSystem
     {
+        private readonly EcsCustomInject<WeaponFactory> _weaponFactory;
         private readonly EcsCustomInject<TimeService> _timeService;
 
         private readonly EcsFilterInject<Inc<WeaponHandler>> _filter;
@@ -20,24 +20,32 @@ namespace Game.Scripts.Gameplay.Weapons
 
 
         public void Init(IEcsSystems systems)
-            => _defaultWeaponHandleData = PlayerIndents.DefaultWeapon;
+            => _weaponFactory.Value.CreateDefaultWeapon(out _defaultWeaponHandleData);
 
         public void Run(IEcsSystems systems)
         {
             foreach (var entity in _filter.Value)
             {
                 ref var handler = ref _handlers.Value.Get(entity);
-                ref var weapon = ref handler.CurrentWeapon;
+                ref var handleData = ref handler.CurrentHandleData;
 
-                weapon.HandledDuration += _timeService.Value.DeltaTime;
+                handleData.HandledDuration += _timeService.Value.DeltaTime;
 
-                if (weapon.HandledDuration >= weapon.Duration)
+                if (handleData.HandledDuration >= handleData.Duration)
                 {
-                    ref var request = ref _switchRequests.Value.Add(entity);
-                    request.WeaponToSwitch = _defaultWeaponHandleData;
-                    request.Switcher = _world.Value.PackEntity(entity);
+                    if (handleData.WeaponEntity.Unpack(_world.Value, out var weapon))
+                        _world.Value.DelEntity(weapon);
+                    
+                    SwitchToDefaultWeapon(entity);
                 }
             }
+        }
+
+        private void SwitchToDefaultWeapon(int entity)
+        {
+            ref var request = ref _switchRequests.Value.Add(entity);
+            request.WeaponToSwitch = _defaultWeaponHandleData;
+            request.Switcher = _world.Value.PackEntity(entity);
         }
     }
 }

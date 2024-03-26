@@ -6,6 +6,7 @@
     "com.leopotam.ecslite.extendedsystems": "https://github.com/Leopotam/ecslite-extendedsystems.git",
     "com.leopotam.ecslite.unity.ugui": "https://github.com/Leopotam/ecslite-unity-ugui.git#develop",
     "com.supremestranger.leoecs-lite-physics": "https://github.com/supremestranger/leoecs-lite-physics.git",
+    "com.leopotam.ecslite.unityeditor": "https://github.com/Leopotam/ecslite-unityeditor.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.spriteshape": "9.0.2",
     "com.unity.2d.tilemap": "1.0.0",

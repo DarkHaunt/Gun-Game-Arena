@@ -161,6 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af8f29813a704b3a87a20ade16ef2c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handleData:
-    HandledDuration: 0
-    Duration: 2
+  _duration: 5
+  _projectile:
+    Speed: 0
+    Damage: 0
+  _cooldown: 3

@@ -27,6 +27,7 @@ using Game.Scripts.Gameplay.Weapons;
 using Game.Scripts.Gameplay.Weapons.Configs;
 using Game.Scripts.Gameplay.Weapons.Creation;
 using Game.Scripts.Gameplay.Weapons.Overlap;
+using Leopotam.EcsLite.UnityEditor;
 
 namespace Game.Scripts.Gameplay.Boot
 {
@@ -92,6 +93,10 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(new EnemyTargetFollowSystem())
                 .Add(new MoveSystem())
                 .Add(new CameraFollowSystem())
+#if UNITY_EDITOR
+                .Add (new EcsWorldDebugSystem ())
+                .Add (new EcsSystemsDebugSystem ())
+#endif
                 ;
 
             _updateSystems = new EcsSystems(_defaultWorld);
@@ -105,8 +110,14 @@ namespace Game.Scripts.Gameplay.Boot
                 .Add(new WeaponHandleSystem())
                 .Add(new WeaponSwitchSystem())
                 
+                // Attack Feature
                 .Add(new AttackSystem())
                 .Add(new DamageApplySystem())
+                
+#if UNITY_EDITOR
+                .Add (new EcsWorldDebugSystem ())
+                .Add (new EcsSystemsDebugSystem ())
+#endif
                 ;
         }
 
@@ -128,13 +139,16 @@ namespace Game.Scripts.Gameplay.Boot
 
         private void InjectInit()
         {
+            var weaponFactory = new WeaponFactory(_defaultWorld,_availableWeaponsConfig);
+            var entitiesFactory = new EntitiesFactory(_assetProvider, weaponFactory);
+            var timeService = new TimeService();
+            
             _updateSystems
-                .Inject(_inputActions, new TimeService())
+                .Inject(_inputActions, weaponFactory, timeService)
                 .Init();
-
+            
             _fixedUpdateSystems
-                .Inject(_environmentData, _environmentConfig, 
-                    new EntitiesFactory(_assetProvider), new WeaponFactory(_defaultWorld,_availableWeaponsConfig))
+                .Inject(_environmentData, _environmentConfig, entitiesFactory, weaponFactory)
                 .Init();
         }
 

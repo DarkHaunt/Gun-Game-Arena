@@ -12,11 +12,11 @@ namespace Game.Scripts.Gameplay.Environment
 {
     public class EnvironmentSetupSystem : IEcsInitSystem
     {
-        private readonly EcsCustomInject<EntitiesFactory> _entitiesFactory = default;
-        private readonly EcsCustomInject<WeaponFactory> _weaponFactory = default;
+        private readonly EcsCustomInject<EntitiesFactory> _entitiesFactory;
+        private readonly EcsCustomInject<WeaponFactory> _weaponFactory;
         
-        private readonly EcsCustomInject<EnvironmentConfig> _config = default;
-        private readonly EcsCustomInject<EnvironmentData> _data = default;
+        private readonly EcsCustomInject<EnvironmentConfig> _config;
+        private readonly EcsCustomInject<EnvironmentData> _data;
         
         
         public void Init(IEcsSystems systems)
@@ -25,7 +25,7 @@ namespace Game.Scripts.Gameplay.Environment
             var level = SpawnLevel();
             
             var player = _entitiesFactory.Value.CreatePlayer(world, level.PlayerSpawnPoint.position);
-            _entitiesFactory.Value.CreateEnemy(world, player.transform, level.EnemiesSpawnPoints.PickRandom().position);
+            //_entitiesFactory.Value.CreateEnemy(world, player.transform, level.EnemiesSpawnPoints.PickRandom().position);
 
             _weaponFactory.Value.CreateRandomWeapon();
             

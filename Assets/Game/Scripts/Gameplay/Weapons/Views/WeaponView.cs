@@ -8,9 +8,10 @@ namespace Game.Scripts.Gameplay.Weapons
     [RequireComponent(typeof(Rigidbody2D))]
     public abstract class WeaponView : MonoBehaviour
     {
-        [SerializeField] private WeaponHandleData _handleData;
+        [SerializeField] private float _duration;
         
         private EcsPool<WeaponSwitchRequest> _switchRequests;
+        private EcsPool<WeaponHandleData> _handleDatas;
         
         private EcsWorld _world;
 
@@ -19,6 +20,9 @@ namespace Game.Scripts.Gameplay.Weapons
             _world = world;
             
             _switchRequests = _world.GetPool<WeaponSwitchRequest>();
+            _handleDatas = _world.GetPool<WeaponHandleData>();
+
+            ConstructInternal(world);
         }
 
         public void HandlePickUp(EcsPackedEntity pickUpEntity)
@@ -26,12 +30,18 @@ namespace Game.Scripts.Gameplay.Weapons
             if (!pickUpEntity.Unpack(_world, out int entity))
                 throw new ArgumentException($"Can't unpack entity {pickUpEntity.Id} || {pickUpEntity.Gen}");
 
+            var weapon = _world.NewEntity();
+            
+            ref var handle = ref _handleDatas.Add(weapon);
+            handle.Duration = _duration;
+            handle.WeaponEntity = _world.PackEntity(weapon);
+            
             ref var switchRequest = ref _switchRequests.Add(entity);
             
-            switchRequest.WeaponToSwitch = _handleData;
+            switchRequest.WeaponToSwitch = handle;
             switchRequest.Switcher = pickUpEntity;
 
-            PickUpHandleInternal(_world, entity);
+            PickUpHandleInternal(weapon);
 
             Disable();
         }
@@ -39,6 +49,8 @@ namespace Game.Scripts.Gameplay.Weapons
         private void Disable()
             => gameObject.SetActive(false);
 
-        protected abstract void PickUpHandleInternal(EcsWorld world, int entity);
+
+        protected abstract void ConstructInternal(EcsWorld world);
+        protected abstract void PickUpHandleInternal(int weapon);
     }
 }
